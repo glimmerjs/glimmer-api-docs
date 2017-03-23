@@ -1,0 +1,49 @@
+<section class="content-container">
+  <h5 class="project-breadcrumb">{{!#link-to "project" project.slug}}{{project.name}}{{!/link-to}}</h5>
+  <div class="module-header">
+    {{@module.kindString}} <h3>{{@module.name}}</h3>
+  </div>
+  {{#if @module.sources}}
+    <source-link @sources={{@module.sources}} />
+  {{/if}}
+  {{#if module.extendedTypes}}
+    <div class="hierarchy-meta">
+    <strong>Extends</strong>
+
+    {{#each @module.extendedTypes key="@index" as |extends|}}
+      <type-annotation @type={{extends}} />
+    {{/each}}
+    </div>
+  {{/if}}
+
+  {{#if @module.implementedTypes}}
+    <div class="hierarchy-meta">
+    <strong>Implements</strong>
+
+    {{#each @module.implementedTypes key="@index" as |implements|}}
+      <type-annotation @type={{implements}} />
+    {{/each}}
+    </div>
+  {{/if}}
+
+  {{#if @module.comment}}
+    <p>{{@module.comment.text}}</p>
+  {{/if}}
+
+  {{#if @module.constructors}}
+    <div class="constructors">
+      <strong>Constructor</strong>
+
+      <method-list @methods={{@module.constructors}} />
+    </div>
+  {{/if}}
+
+  {{#if @module.methods}}
+    <strong>Methods</strong>
+    <method-list @methods={{@module.methods}} />
+  {{/if}}
+
+  {{#if module.properties}}
+    <variable-list @label="Properties" @variables={{@module.properties}} />
+  {{/if}}
+</section>

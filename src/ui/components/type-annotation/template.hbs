@@ -1,0 +1,10 @@
+{{#if @type.link}}
+  {{!#link-to "project.module" type.link.parent.slug type.link.slug class="type"}}{{@type.name}}{{!/link-to}}
+{{else}}
+  <span class="type">{{@type.name}}</span>
+{{/if}}
+{{#if @type.isArray}}<span class="isArray">[]</span>{{/if}}
+
+{{#if @type.isOptional}}
+SWAG
+{{/if}}

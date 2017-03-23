@@ -1,3 +1,9 @@
-<div>
-  <h1>Welcome to Glimmer!</h1>
+<div id="top-menu"><h1>{{!#link-to "index"}}{{model.main.title}}{{!/link-to}}</h1></div>
+<div class="row" id="column-container">
+  <div class="four columns" id="menu-container">
+      <left-menu @data={{model.menu}} />
+  </div>
+  <div class="eight columns" id="content-container">
+    {{!outlet}}
+  </div>
 </div>
