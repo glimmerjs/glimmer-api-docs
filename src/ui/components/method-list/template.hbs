@@ -45,6 +45,7 @@
                   </ol>
                 {{/if}}
                 {{#if signature.comment}}
+                  <markdown-viewer @text={{signature.comment.shortText}} />
                   <markdown-viewer @text={{signature.comment.text}} />
                 {{/if}}
               </div>
