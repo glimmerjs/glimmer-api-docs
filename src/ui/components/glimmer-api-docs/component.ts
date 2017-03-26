@@ -186,9 +186,6 @@ export default class GlimmerApiDocs extends Component {
   }
 
   showProject(projectId) {
-    console.log("project", projectId, this);
-    // this.currentProject = this.docsService.fetchProject(projectId);
-    // this.currentView = 'project-landing'
     this.theCurrentView = {
       componentName: 'project-landing',
       project: this.docsService.fetchProject(projectId),
@@ -197,10 +194,6 @@ export default class GlimmerApiDocs extends Component {
   }
 
   showModule(projectId, moduleId) {
-    console.log("module", projectId, moduleId, this);
-    // this.currentProject = this.docsService.fetchProject(projectId);
-    // this.currentModule = this.docsService.fetchModule(moduleId, projectId);
-    // this.currentView = 'module-landing'
     this.theCurrentView = {
       componentName: 'module-landing',
       project: this.docsService.fetchProject(projectId),
