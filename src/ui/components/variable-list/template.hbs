@@ -1,14 +1,17 @@
-<strong>{{@label}}</strong>
-<ul class="properties-list">
-{{#each variables key="@index" as |property|}}
-  <li class="property-definition" id="variable-{{property.slug}}">
-    <div class="property-title-container">
-      <h5><a href="#variable-{{property.slug}}">{{property.name}}</a></h5>
-      <div class="property-type"><type-annotation @type={{property.type}} /></div>
-    </div>
-    {{#if property.comment}}
-      <p>{{property.comment.text}}</p>
-    {{/if}}
-  </li>
-{{/each}}
-</ul>
+<div>
+  <strong>{{@label}}</strong>
+
+  <ul class="properties-list">
+    {{#each @variables key="@index" as |property|}}
+      <li class="property-definition" id="variable-{{property.slug}}">
+        <div class="property-title-container">
+          <h5><a href="#variable-{{property.slug}}">{{property.name}}</a></h5>
+          <div class="property-type"><type-annotation @type={{property.type}} /></div>
+        </div>
+        {{#if property.comment}}
+          <p>{{property.comment.text}}</p>
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+</div>

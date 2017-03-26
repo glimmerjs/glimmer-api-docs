@@ -10,10 +10,10 @@
   </div>
   <div class="eight columns" id="content-container">
     <!-- module won't be used for project-landing -->
-    {{#if currentView}}
-      {{component currentView
-          module=currentModule
-          project=currentProject
+    {{#if theCurrentView.componentName}}
+      {{component theCurrentView.componentName
+          project=theCurrentView.project
+          module=theCurrentView.module
           }}
     {{else}}
       <section class="content-container">

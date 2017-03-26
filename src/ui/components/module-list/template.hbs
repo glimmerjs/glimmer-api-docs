@@ -1,7 +1,9 @@
-<strong>{{@title}}</strong>
+<div>
+  <strong>{{@title}}</strong>
 
-<ul class="project-list">
-  {{#each @modules key="@index" as |module|}}
-    <li>{{!#link-to "project.module" project module.slug}}{{module.name}}{{!/link-to}}</li>
-  {{/each}}
-</ul>
+  <ul class="project-list">
+    {{#each @modules key="@index" as |module|}}
+      <li>{{!#link-to "project.module" project module.slug}}{{module.name}}{{!/link-to}}</li>
+    {{/each}}
+  </ul>
+</div>
