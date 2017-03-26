@@ -178,6 +178,10 @@ export default class GlimmerApiDocs extends Component {
    */
   docsService = new DocsService();
 
+  didInsertElement() {
+    console.log("iinnnserted", window.location);
+  }
+
   /**
    * This property holds the whole documentation tree.
    */
@@ -186,18 +190,33 @@ export default class GlimmerApiDocs extends Component {
   }
 
   showProject(projectId) {
-    this.theCurrentView = {
-      componentName: 'project-landing',
-      project: this.docsService.fetchProject(projectId),
-      module: null
-    };
+    let componentName = 'project-landing';
+    let project = this.docsService.fetchProject(projectId);
+    let module = null;
+
+    this.theCurrentView = { componentName, project, module };
+
+    let stateObj = { componentName, project: projectId, module };
+    let name = this.theCurrentView.project.name;
+    let url = `/projects/${projectId}`;
+    console.log("¿oi", name);
+    window.history.pushState(stateObj, `${this.theCurrentView.project.name}`, url);
+    console.log("oi?");
   }
 
   showModule(projectId, moduleId) {
-    this.theCurrentView = {
-      componentName: 'module-landing',
-      project: this.docsService.fetchProject(projectId),
-      module: this.docsService.fetchModule(moduleId, projectId);
-    };
+    let componentName = 'module-landing';
+    let project = this.docsService.fetchProject(projectId);
+    let module = this.docsService.fetchModule(moduleId, projectId);;
+
+    this.theCurrentView = { componentName, project, module };
+
+    let stateObj = { componentName, project: projectId, module: moduleId };
+    let name = this.theCurrentView.project.name;
+    let url = `/projects/${projectId}/modules/${moduleId}`;
+    console.log("¿oi", name);
+    window.history.pushState(stateObj, `${this.theCurrentView.project.name}`, url);
+    console.log("oi?");
+
   }
 }
