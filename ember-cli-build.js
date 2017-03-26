@@ -1,4 +1,8 @@
 const { GlimmerApp } = require('@glimmer/application-pipeline');
+var json = require('broccoli-json-module');
+var Funnel = require('broccoli-funnel');
+var Rollup = require('broccoli-rollup');
+var merge = require('broccoli-merge-trees');
 
 module.exports = function(defaults) {
   var app = new GlimmerApp(defaults, {
@@ -18,5 +22,20 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  return app.toTree();
+  var docs = new Rollup(json('docs-source'), {
+    rollup: {
+      entry: 'main.js',
+      format: 'umd',
+      dest: 'main.js',
+      moduleName: 'docs'
+    }
+  });
+
+  var extraAssets = new Funnel(docs, {
+    srcDir: '/',
+    destDir: '/assets/docs'
+  });
+
+  return merge([app.toTree(), extraAssets]);
+  // return app.toTree();
 };

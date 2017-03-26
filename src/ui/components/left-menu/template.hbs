@@ -2,10 +2,12 @@
 
   {{#each @data key="@index" as |project|}}
   <li>
-    {{!#link-to "project" project.id}}{{project.name}}{{!/link-to}}
+    <a href="#" onclick={{action @showProject project.id}}>{{project.name}}</a>
     <ul class="menu vertical nested">
       {{#each project.children key="@index" as |child|}}
-        <li>{{!#link-to "project.module" project.id child.slug}}{{child.name}}{{!/link-to}}</li>
+        <li>
+          <a href="#" onclick={{action @showModule project.id child.slug}}>{{child.name}}</a>
+        </li>
       {{/each}}
     </ul>
   </li>
