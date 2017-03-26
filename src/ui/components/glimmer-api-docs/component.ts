@@ -160,46 +160,51 @@ class DocsService {
   }
 };
 
+interface CurrentView {
+  componentName: string | null;
+  project;
+  module;
+}
+
 export default class GlimmerApiDocs extends Component {
-    /**
-     * Alternates between `module-landing` and `project-landing`.
-     */
-    @tracked currentView: NullableString = null;
+  @tracked theCurrentView: CurrentView = {
+    componentName: null,
+    project: null,
+    module: null
+  };
 
-    /**
-     * Should be set to the current module to be displayed.
-     */
-    @tracked currentModule = null;
+  /**
+   * Service object to fetch docs data.
+   */
+  docsService = new DocsService();
 
-    /**
-     * Should be set to the current project to be displayed.
-     */
-    @tracked currentProject = null;
+  /**
+   * This property holds the whole documentation tree.
+   */
+  get model() {
+      return this.docsService.fetchRoot();
+  }
 
-    /**
-     * Service object to fetch docs data.
-     */
-    docsService = new DocsService();
+  showProject(projectId) {
+    console.log("project", projectId, this);
+    // this.currentProject = this.docsService.fetchProject(projectId);
+    // this.currentView = 'project-landing'
+    this.theCurrentView = {
+      componentName: 'project-landing',
+      project: this.docsService.fetchProject(projectId),
+      module: null
+    };
+  }
 
-    /**
-     * This property holds the whole documentation tree.
-     */
-    get model() {
-        // return docs;
-        return this.docsService.fetchRoot();
-    }
-    // model = this.docsService.fetchRoot();
-
-    showProject(projectId) {
-        console.log("project", projectId, this);
-        this.currentProject = this.docsService.fetchProject(projectId);
-        this.currentView = 'project-landing'
-    }
-
-    showModule(projectId, moduleId) {
-        console.log("module", projectId, moduleId, this);
-        this.currentProject = this.docsService.fetchProject(projectId);
-        this.currentModule = this.docsService.fetchModule(moduleId, projectId);
-        this.currentView = 'module-landing'
-    }
+  showModule(projectId, moduleId) {
+    console.log("module", projectId, moduleId, this);
+    // this.currentProject = this.docsService.fetchProject(projectId);
+    // this.currentModule = this.docsService.fetchModule(moduleId, projectId);
+    // this.currentView = 'module-landing'
+    this.theCurrentView = {
+      componentName: 'module-landing',
+      project: this.docsService.fetchProject(projectId),
+      module: this.docsService.fetchModule(moduleId, projectId);
+    };
+  }
 }
