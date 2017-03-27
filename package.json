@@ -12,7 +12,7 @@
     "test": "ember test"
   },
   "devDependencies": {
-    "@glimmer/application": "^0.3.7",
+    "@glimmer/application": "^0.3.8",
     "@glimmer/application-pipeline": "^0.3.1",
     "@glimmer/component": "^0.3.6",
     "@glimmer/resolver": "^0.3.0",
