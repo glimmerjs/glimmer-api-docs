@@ -1,0 +1,19 @@
+{
+  "manifest": {
+    "title": "Glimmer",
+    "intro": "Everything is awesome"
+  },
+  "projects": [
+    {
+      "src": "repos/glimmer-component/src/",
+      "include": [
+        "Component",
+        "tracked"
+      ]
+    },
+    {
+      "src": "repos/glimmer-application/src/"
+    }
+  ],
+  "output": "docs-source/main.json"
+}
