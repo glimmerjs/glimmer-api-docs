@@ -1,5 +1,5 @@
 <section class="content-container">
-  <h5 class="project-breadcrumb">{{!#link-to "project" project.slug}}{{project.name}}{{!/link-to}}</h5>
+  <h5 class="project-breadcrumb" onclick={{action @showProject project.slug}}></h5>
   <div class="module-header">
     {{@module.kindString}} <h3>{{@module.name}}</h3>
   </div>
@@ -11,7 +11,7 @@
     <h3>Extends</h3>
 
     {{#each @module.extendedTypes key="@index" as |extends|}}
-      <type-annotation @type={{extends}} />
+      <type-annotation @type={{extends}} @showModule={{action @showModule}} />
     {{/each}}
     </div>
   {{/if}}
@@ -21,31 +21,31 @@
     <h3>Implements</h3>
 
     {{#each @module.implementedTypes key="@index" as |implements|}}
-      <type-annotation @type={{implements}} />
+      <type-annotation @type={{implements}} @showModule={{action @showModule}} />
     {{/each}}
     </div>
   {{/if}}
 
   {{#if @module.comment}}
-    <p>{{@module.comment.shortText}}</p>
-    <p>{{@module.comment.text}}</p>
+    <markdown-viewer @text={{@module.comment.shortText}} />
+    <markdown-viewer @text={{@module.comment.text}} />
   {{/if}}
 
   {{#if @module.constructors}}
     <div class="constructors">
       <h3>Constructor</h3>
 
-      <method-list @methods={{@module.constructors}} />
+      <method-list @showModule={{action @showModule}} @methods={{@module.constructors}} />
     </div>
   {{/if}}
 
   {{#if @module.methods}}
     <h3>Methods</h3>
 
-    <method-list @hasMethodCategories={{@module.hasMethodCategories}} @methods={{@module.methods}} />
+    <method-list @showModule={{action @showModule}} @hasMethodCategories={{@module.hasMethodCategories}} @methods={{@module.methods}} />
   {{/if}}
 
   {{#if module.properties}}
-    <variable-list @label="Properties" @variables={{@module.properties}} />
+    <variable-list @label="Properties" @variables={{@module.properties}} @showModule={{action @showModule}} />
   {{/if}}
 </section>

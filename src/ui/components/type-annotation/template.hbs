@@ -1,6 +1,8 @@
 <div>
   {{#if @type.link}}
-    {{!#link-to "project.module" type.link.parent.slug type.link.slug class="type"}}{{@type.name}}{{!/link-to}}
+    <a href="#" class="type" onclick={{action @showModule @type.link.parent.id @type.link.id}}>
+      {{@type.name}}
+    </a>
   {{else}}
     <span class="type">{{@type.name}}</span>
   {{/if}}

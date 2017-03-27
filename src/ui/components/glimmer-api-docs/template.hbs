@@ -1,4 +1,4 @@
-<div id="top-menu"><h1>{{!#link-to "index"}}{{model.main.title}}{{!/link-to}}</h1></div>
+<div id="top-menu"><h1 onclick={{action showIndex}}>{{model.main.title}}</h1></div>
 
 <div class="row" id="column-container">
   <div class="four columns" id="menu-container">
@@ -14,6 +14,8 @@
       {{component theCurrentView.componentName
           project=theCurrentView.project
           module=theCurrentView.module
+          showProject=(action showProject)
+          showModule=(action showModule)
           }}
     {{else}}
       <section class="content-container">
