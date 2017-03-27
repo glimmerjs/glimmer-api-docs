@@ -27,8 +27,8 @@
   {{/if}}
 
   {{#if @module.comment}}
-    <p>{{@module.comment.shortText}}</p>
-    <p>{{@module.comment.text}}</p>
+    <markdown-viewer @text={{@module.comment.shortText}} />
+    <markdown-viewer @text={{@module.comment.text}} />
   {{/if}}
 
   {{#if @module.constructors}}
