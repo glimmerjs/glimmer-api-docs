@@ -1,58 +1,19 @@
-<ul class="methods-list">
-  {{#each @methods key="@index" as |method|}}
-    <li id="method-{{method.slug}}">
-      <ol class="signatures-list">
-        {{#each method.signatures key="@index" as |signature|}}
-          <li>
-            <div class="access">
-              {{#if method.flags.isPublic}}
-                Public
-              {{/if}}
-              {{#if method.flags.isPrivate}}
-                Private
-              {{/if}}
-              {{#if method.flags.isProtected}}
-                Protected
-              {{/if}}
-            </div>
-            <div class="method-signature">
-              <h5><a href="#method-{{method.slug}}">{{signature.name}}</a></h5>
-
-              <ol class="parameters">
-                {{#if signature.parameters}}
-                  {{#each signature.parameters key="@index" as |param|}}
-                    <li>
-                      <div class="param-name">{{param.name}}</div>
-                    </li>
-                  {{/each}}
-                {{/if}}
-              </ol>
-
-              <div class="return-type">
-                <type-annotation @type={{signature.type}} />
-              </div>
-            </div>
-            {{#if signature.hasBody}}
-              <div class="method-body">
-                {{#if signature.parameters}}
-                  <strong class="sub">Arguments</strong>
-                  <ol class="parameters-list">
-                    {{#each signature.parameters key="@index" as |param|}}
-                    <li>
-                      {{param.name}}: <type-annotation @type={{param.type}} />
-                    </li>
-                    {{/each}}
-                  </ol>
-                {{/if}}
-                {{#if signature.comment}}
-                  <markdown-viewer @text={{signature.comment.shortText}} />
-                  <markdown-viewer @text={{signature.comment.text}} />
-                {{/if}}
-              </div>
-            {{/if}}
-          </li>
-        {{/each}}
-      </ol>
-    </li>
-  {{/each}}
-</ul>
+<div class="methods-list">
+  {{#if @hasMethodCategories}}
+    {{#each categories key="@index" as |category|}}
+      <div class="method-category">
+        <h4 id="method-category-{{category.slug}}">{{category.name}}</h4>
+        <ul>
+          {{#each category.methods key="@index" as |method|}}
+            <method-item @method={{method}} />
+          {{/each}}
+        </ul>
+      </div>
+    {{/each}}
+  {{else}}
+    {{#each @methods key="@index" as |method|}}
+      <div>Methods: {{method.length}}</div>
+      <method-item @method={{method}} />
+    {{/each}}
+  {{/if}}
+</div>

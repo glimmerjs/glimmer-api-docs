@@ -1,8 +1,9 @@
 const { GlimmerApp } = require('@glimmer/application-pipeline');
-var json = require('broccoli-json-module');
-var Funnel = require('broccoli-funnel');
-var Rollup = require('broccoli-rollup');
-var merge = require('broccoli-merge-trees');
+const json = require('broccoli-json-module');
+const Funnel = require('broccoli-funnel');
+const Rollup = require('broccoli-rollup');
+const merge = require('broccoli-merge-trees');
+const concat = require('broccoli-concat');
 
 module.exports = function(defaults) {
   var app = new GlimmerApp(defaults, {
@@ -36,6 +37,11 @@ module.exports = function(defaults) {
     destDir: '/assets/docs'
   });
 
-  return merge([app.toTree(), extraAssets]);
+  let styles = concat('styles', {
+    inputFiles: ['**/*.css'],
+    outputFile: 'app.css'
+  });
+
+  return merge([app.toTree(), extraAssets, styles]);
   // return app.toTree();
 };

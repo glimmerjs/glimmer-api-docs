@@ -14,8 +14,8 @@
   "devDependencies": {
     "@glimmer/application": "^0.3.7",
     "@glimmer/application-pipeline": "^0.3.1",
-    "@glimmer/component": "^0.3.1",
-    "@glimmer/resolver": "^0.2.0",
+    "@glimmer/component": "^0.3.6",
+    "@glimmer/resolver": "^0.3.0",
     "broccoli-funnel": "^1.1.0",
     "broccoli-json-module": "^1.0.0",
     "broccoli-merge-trees": "^2.0.0",

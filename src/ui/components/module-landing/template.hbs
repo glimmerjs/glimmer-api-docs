@@ -8,7 +8,7 @@
   {{/if}}
   {{#if module.extendedTypes}}
     <div class="hierarchy-meta">
-    <strong>Extends</strong>
+    <h3>Extends</h3>
 
     {{#each @module.extendedTypes key="@index" as |extends|}}
       <type-annotation @type={{extends}} />
@@ -18,7 +18,7 @@
 
   {{#if @module.implementedTypes}}
     <div class="hierarchy-meta">
-    <strong>Implements</strong>
+    <h3>Implements</h3>
 
     {{#each @module.implementedTypes key="@index" as |implements|}}
       <type-annotation @type={{implements}} />
@@ -33,16 +33,16 @@
 
   {{#if @module.constructors}}
     <div class="constructors">
-      <strong>Constructor</strong>
+      <h3>Constructor</h3>
 
       <method-list @methods={{@module.constructors}} />
     </div>
   {{/if}}
 
   {{#if @module.methods}}
-    <strong>Methods</strong>
+    <h3>Methods</h3>
 
-    <method-list @methods={{@module.methods}} />
+    <method-list @hasMethodCategories={{@module.hasMethodCategories}} @methods={{@module.methods}} />
   {{/if}}
 
   {{#if module.properties}}

@@ -38,18 +38,45 @@ function signatureMap(signature) {
   return signature;
 }
 
+function categoryFor(method: any) {
+  for (let signature of method.signatures) {
+    let comment = signature.comment;
+    let tags = comment && comment.tags;
+
+    if (!tags) { continue; }
+
+    for (let tag of tags) {
+      if (tag.tagName === 'category') {
+        return tag.text.trim();
+      }
+    }
+  }
+
+  return null;
+}
+
 function addViewMeta(attributes) {
   if (attributes.properties) {
     flagsMap(attributes.properties);
   }
   if (attributes.methods) {
+    let hasMethodCategories = false;
+
     attributes.methods = attributes.methods.map((method) => {
       flagsMap(method);
       if (method.callSignatures) {
         method.signatures = method.callSignatures.map(signatureMap);
       }
+      if (method.signatures) {
+        let category = categoryFor(method);
+        if (category) {
+          hasMethodCategories = true;
+          method.category = category;
+        }
+      }
       return method;
     });
+    attributes.hasMethodCategories = hasMethodCategories;
   }
   if (attributes.functions) {
     attributes.functions = attributes.functions.map((method) => {
