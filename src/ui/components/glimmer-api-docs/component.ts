@@ -1,6 +1,8 @@
 import Component, { tracked } from "@glimmer/component";
 
 const DATA = window.docs;
+const MODULE_PATH_LABEL = 'modules';
+const PROJECT_PATH_LABEL = 'projects';
 
 function materialize(obj) {
   if (Object.keys(obj).length !== 2 || !obj.id || !obj.type) {
@@ -193,6 +195,11 @@ interface CurrentView {
   module;
 }
 
+interface ResourceIdMap {
+  moduleId: string,
+  projectId: string
+}
+
 export default class GlimmerApiDocs extends Component {
   @tracked theCurrentView: CurrentView = {
     componentName: null,
@@ -205,6 +212,43 @@ export default class GlimmerApiDocs extends Component {
    */
   docsService = new DocsService();
 
+  getIdsFromPath(path: string): ResourceIdMap {
+    if (path[0] === '/') {
+      path = path.substring(1);
+    }
+    if (path[path.length-1] === '/') {
+      path = path.substring(0, path.length-1);
+    }
+    let segs = path.split('/');
+    if (segs[0] !== PROJECT_PATH_LABEL || (segs.length !== 2 && segs.length !== 4) || (segs.length === 4 && segs[2] !== MODULE_PATH_LABEL)) {
+      return {
+        moduleId: null,
+        projectId: null
+      };
+    }
+    const projectId = segs[1];
+    let moduleId = null;
+    if (segs.length === 4) {
+      moduleId = segs[3];
+    }
+    return {
+      moduleId,
+      projectId
+    };
+  }
+
+  didInsertElement() {
+    const path = window.location.pathname;
+    const { moduleId, projectId } = this.getIdsFromPath(path);
+    if (!projectId) {
+      this.show404();
+    } else if(moduleId) {
+      this.showModule(projectId, moduleId);
+    } else {
+      this.showProject(projectId);
+    }
+  }
+
   /**
    * This property holds the whole documentation tree.
    */
@@ -212,19 +256,42 @@ export default class GlimmerApiDocs extends Component {
       return this.docsService.fetchRoot();
   }
 
+  show404() {
+    console.error('404');
+    // TODO
+  }
+
   showProject(projectId) {
-    this.theCurrentView = {
-      componentName: 'project-landing',
-      project: this.docsService.fetchProject(projectId),
-      module: null
-    };
+    const componentName = 'project-landing';
+    let project = this.docsService.fetchProject(projectId);
+    let module = null;
+
+    if (!project) {
+      return this.show404();
+    }
+
+    this.theCurrentView = { componentName, project, module };
+
+    let stateObj = { componentName, projectId, moduleId: null };
+    let name = this.theCurrentView.project.name;
+    let url = `/${PROJECT_PATH_LABEL}/${projectId}`;
+    window.history.pushState(stateObj, `${this.theCurrentView.project.name}`, url);
   }
 
   showModule(projectId, moduleId) {
-    this.theCurrentView = {
-      componentName: 'module-landing',
-      project: this.docsService.fetchProject(projectId),
-      module: this.docsService.fetchModule(moduleId, projectId)
-    };
+    const componentName = 'module-landing';
+    let project = this.docsService.fetchProject(projectId);
+    let module = this.docsService.fetchModule(moduleId, projectId);;
+
+    if (!project || !module) {
+      return this.show404();
+    }
+
+    this.theCurrentView = { componentName, project, module };
+
+    let stateObj = { componentName, projectId, moduleId };
+    let name = this.theCurrentView.project.name;
+    let url = `/${PROJECT_PATH_LABEL}/${projectId}/${MODULE_PATH_LABEL}/${moduleId}`;
+    window.history.pushState(stateObj, `${this.theCurrentView.project.name}`, url);
   }
 }
