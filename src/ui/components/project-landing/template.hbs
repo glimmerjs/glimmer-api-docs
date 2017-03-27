@@ -24,7 +24,7 @@
 
     {{#if @project.functions}}
       <strong>Functions</strong>
-      <method-list @methods={{@project.functions}} />
+      <method-list @methods={{@project.functions}} @showModule={{action @showModule}} />
     {{/if}}
 
     {{#if @project.objectLiterals}}
