@@ -212,6 +212,14 @@ export default class GlimmerApiDocs extends Component {
       return this.docsService.fetchRoot();
   }
 
+  showIndex() {
+    this.theCurrentView = {
+      componentName: null,
+      project: null,
+      module: null
+    }
+  }
+
   showProject(projectId) {
     this.theCurrentView = {
       componentName: 'project-landing',
