@@ -214,7 +214,7 @@ export default class GlimmerApiDocs extends Component {
 
   showIndex() {
     this.theCurrentView = {
-      componentName: '',
+      componentName: null,
       project: null,
       module: null
     }
