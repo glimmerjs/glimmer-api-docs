@@ -3,7 +3,7 @@
 
   <ul class="project-list">
     {{#each @modules key="@index" as |module|}}
-      <li onclick={{action @showModule project module.slug}}>{{module.name}}</li>
+      <li onclick={{action @showModule @projectId module.slug}}>{{module.name}}</li>
     {{/each}}
   </ul>
 </div>

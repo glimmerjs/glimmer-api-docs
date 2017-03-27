@@ -5,11 +5,21 @@
 
   <section class="content-container project-container">
     {{#if @project.interfaces}}
-      <module-list @project={{@project.id}} @title="Interfaces" @modules={{@project.interfaces}} />
+      <module-list
+          @showModule={{action @showModule}}
+          @projectId={{@project.id}}
+          @title="Interfaces"
+          @modules={{@project.interfaces}}
+          />
     {{/if}}
 
     {{#if @project.classes}}
-      <module-list @project={{@project.id}} title="Classes" @modules={{@project.classes}} />
+      <module-list
+          @showModule={{action @showModule}}
+          @projectId={{@project.id}}
+          @title="Classes"
+          @modules={{@project.classes}}
+          />
     {{/if}}
 
     {{#if @project.functions}}
