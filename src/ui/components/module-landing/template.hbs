@@ -35,14 +35,14 @@
     <div class="constructors">
       <h3>Constructor</h3>
 
-      <method-list @showModule={{@showModule}} @methods={{@module.constructors}} />
+      <method-list @showModule={{action @showModule}} @methods={{@module.constructors}} />
     </div>
   {{/if}}
 
   {{#if @module.methods}}
     <h3>Methods</h3>
 
-    <method-list @hasMethodCategories={{@module.hasMethodCategories}} @methods={{@module.methods}} />
+    <method-list @showModule={{action @showModule}} @hasMethodCategories={{@module.hasMethodCategories}} @methods={{@module.methods}} />
   {{/if}}
 
   {{#if module.properties}}
