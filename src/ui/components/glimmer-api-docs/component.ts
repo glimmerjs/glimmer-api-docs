@@ -1,5 +1,8 @@
 import Component, { tracked } from "@glimmer/component";
 
+// TODO: get this from config
+const rootUrl = '/';
+
 const DATA = window.docs;
 const MODULE_PATH_LABEL = 'modules';
 const PROJECT_PATH_LABEL = 'projects';
@@ -193,6 +196,7 @@ interface CurrentView {
   componentName: string | null;
   project;
   module;
+  notFound?: boolean;
 }
 
 interface ResourceIdMap {
@@ -204,7 +208,8 @@ export default class GlimmerApiDocs extends Component {
   @tracked theCurrentView: CurrentView = {
     componentName: null,
     project: null,
-    module: null
+    module: null,
+    notFound: false
   };
 
   /**
@@ -240,7 +245,9 @@ export default class GlimmerApiDocs extends Component {
   didInsertElement() {
     const path = window.location.pathname;
     const { moduleId, projectId } = this.getIdsFromPath(path);
-    if (!projectId) {
+    if (path === rootUrl || path + '/' === rootUrl) {
+      this.showHome();
+    } else if (!projectId) {
       this.show404();
     } else if(moduleId) {
       this.showModule(projectId, moduleId);
@@ -257,8 +264,25 @@ export default class GlimmerApiDocs extends Component {
   }
 
   show404() {
-    console.error('404');
-    // TODO
+    this.theCurrentView = {
+      module: null,
+      project: null,
+      componentName: null,
+      notFound: true
+    }
+  }
+
+  showHome(blank: string, evt?: any) {
+    if (evt) {
+      evt.preventDefault();
+    }
+    this.theCurrentView = {
+      module: null,
+      project: null,
+      componentName: null,
+      notFound: false
+    }
+    window.history.pushState({}, this.model.main.title, rootUrl);
   }
 
   showIndex() {
