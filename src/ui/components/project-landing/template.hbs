@@ -18,15 +18,15 @@
     {{/if}}
 
     {{#if @project.objectLiterals}}
-      <variable-list @label="Object Literals" @variables={{@project.objectLiterals}} />
+      <variable-list @label="Object Literals" @variables={{@project.objectLiterals}} @showModule={{action @showModule}} />
     {{/if}}
 
     {{#if @project.typeAliases}}
-      <variable-list @label="Type Aliases" @variables={{@project.typeAliases}} />
+      <variable-list @label="Type Aliases" @variables={{@project.typeAliases}} @showModule={{action @showModule}} />
     {{/if}}
 
     {{#if @project.variables}}
-      <variable-list @label="Variables" @variables={{@project.variables}} />
+      <variable-list @label="Variables" @variables={{@project.variables}} @showModule={{action @showModule}} />
     {{/if}}
   </section>
 </div>
