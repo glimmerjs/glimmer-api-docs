@@ -4,7 +4,7 @@
       <span class="hamburger-inner"></span>
     </span>
   </button>
-  <h1><a href="/" onclick={{action showIndex}}>{{model.main.title}}</a></h1>
+  <h1><a href="/api/" onclick={{action showIndex}}>{{model.main.title}}</a></h1>
 </div>
 
 <div class="row" id="column-container">
@@ -28,5 +28,14 @@
         </p>
       </section>
     {{/if}}
+    <section id="footer">
+      <ol class="links">
+        <li><a href="/">Glimmer Home</a></li>
+        <li><a href="/">Glimmer API Docs</a></li>
+      </ol>
+      <div class="copyright">
+        ©2017 Ember.js
+      </div>
+    </section>
   </div>
 </div>
