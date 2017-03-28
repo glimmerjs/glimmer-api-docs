@@ -242,8 +242,7 @@ export default class GlimmerApiDocs extends Component {
     };
   }
 
-  didInsertElement() {
-    const path = window.location.pathname;
+  loadFromUrl(path: string) {
     const { moduleId, projectId } = this.getIdsFromPath(path);
     if (path === rootUrl || path + '/' === rootUrl) {
       this.showIndex();
@@ -254,6 +253,21 @@ export default class GlimmerApiDocs extends Component {
     } else {
       this.showProject(projectId);
     }
+  }
+
+  bindInternalLinks() {
+    document.addEventListener('click', (evt: Event) => {
+      const target = <HTMLElement>evt.target;
+      if (target.tagName === 'A' && target.classList.contains('internal-link')) {
+        evt.preventDefault();
+        this.loadFromUrl(target.getAttribute('href'));
+      }
+    });
+  }
+
+  didInsertElement() {
+    this.bindInternalLinks();
+    this.loadFromUrl(window.location.pathname);
   }
 
   /**

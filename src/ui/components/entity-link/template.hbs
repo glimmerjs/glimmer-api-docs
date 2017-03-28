@@ -1,0 +1,11 @@
+<span>
+{{#if @moduleId}}
+  <a href="/projects/{{@projectId}}/modules/{{@moduleId}}" class="internal-link">
+    {{@name}}
+  </a>
+{{else}}
+  <a href="/projects/{{@projectId}}" class="internal-link">
+    {{@name}}
+  </a>
+{{/if}}
+</span>

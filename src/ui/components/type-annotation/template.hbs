@@ -1,14 +1,13 @@
-<div>
+<div class="type-annotation">
   {{#if @type.link}}
-    <a href="#" class="type" onclick={{action @showModule @type.link.parent.id @type.link.id}}>
-      {{@type.name}}
-    </a>
+    <entity-link @name={{@type.name}} @projectId={{@type.link.parent.slug}} @moduleId={{@type.link.slug}} />
   {{else}}
     <span class="type">{{@type.name}}</span>
   {{/if}}
-  {{#if @type.isArray}}<span class="isArray">[]</span>{{/if}}
-
+  {{#if @type.isArray}}
+    <span class="isArray">[]</span>
+  {{/if}}
   {{#if @type.isOptional}}
-    SWAG
+    <span class="isArray">?</span>
   {{/if}}
 </div>
