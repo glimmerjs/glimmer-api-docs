@@ -53,7 +53,10 @@
                 {{{signature.comment.shortText}}}
                 {{{signature.comment.text}}}
                 {{#each signature.comment.tags key="@index" as |tag|}}
-                  {{{tag.text}}}
+                  <strong>{{tag.tagName}}</strong>
+                  <p class="tag">
+                    {{{tag.text}}}
+                  </p>
                 {{/each}}
               </section>
             {{/if}}
