@@ -11,7 +11,7 @@ rm -rf tmp/build
 
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
 
-ember build --environment=production
+$ROOT_DIR/node_modules/.bin/ember build --environment=production
 mkdir -p tmp/build
 echo "cloning"
 git clone https://ember-guides-deploy-bot:${GITHUB_TOKEN}@github.com/tomdale/glimmer-website.git tmp/build/glimmer-website 2>&1
