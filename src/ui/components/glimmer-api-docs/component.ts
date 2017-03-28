@@ -315,7 +315,7 @@ export default class GlimmerApiDocs extends Component {
 
     let stateObj = { componentName, projectId, moduleId };
     let name = this.theCurrentView.project.name;
-    let url = `/${PROJECT_PATH_LABEL}/${projectId}/${MODULE_PATH_LABEL}/${moduleId}`;
+    let url = `${PROJECT_PATH_LABEL}/${projectId}/${MODULE_PATH_LABEL}/${moduleId}`;
     window.history.pushState(stateObj, `${this.theCurrentView.project.name}`, url);
   }
 }
