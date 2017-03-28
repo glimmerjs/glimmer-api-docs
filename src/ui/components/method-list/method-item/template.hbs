@@ -31,7 +31,7 @@
           </ol>
 
           <div class="return-type">
-            <type-annotation @type={{signature.type}} @showModule={{action @showModule}} />
+            <type-annotation @type={{signature.type}} />
           </div>
         </div>
         {{#if signature.hasBody}}
@@ -41,7 +41,7 @@
               <ol class="parameters-list">
                 {{#each signature.parameters key="@index" as |param|}}
                 <li>
-                  {{param.name}}: <type-annotation @type={{param.type}} @showModule={{action @showModule}} />
+                  {{param.name}}: <type-annotation @type={{param.type}} />
                 </li>
                 {{/each}}
               </ol>

@@ -4,11 +4,7 @@
 
 <div class="row" id="column-container">
   <div class="four columns" id="menu-container">
-      <left-menu
-          @data={{model.menu}}
-          @showProject={{action showProject}}
-          @showModule={{action showModule}}
-          />
+      <left-menu @data={{model.menu}} />
   </div>
   <div class="eight columns" id="content-container">
     <!-- module won't be used for project-landing -->
@@ -17,7 +13,6 @@
           project=theCurrentView.project
           module=theCurrentView.module
           showProject=(action showProject)
-          showModule=(action showModule)
           }}
     {{else if theCurrentView.notFound}}
       <not-found @showIndex={{action showIndex}} />

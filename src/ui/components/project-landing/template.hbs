@@ -6,7 +6,6 @@
   <section class="content-container project-container">
     {{#if @project.interfaces}}
       <module-list
-          @showModule={{action @showModule}}
           @projectId={{@project.id}}
           @title="Interfaces"
           @modules={{@project.interfaces}}
@@ -15,7 +14,6 @@
 
     {{#if @project.classes}}
       <module-list
-          @showModule={{action @showModule}}
           @projectId={{@project.id}}
           @title="Classes"
           @modules={{@project.classes}}
@@ -24,19 +22,19 @@
 
     {{#if @project.functions}}
       <strong>Functions</strong>
-      <method-list @methods={{@project.functions}} @showModule={{action @showModule}} />
+      <method-list @methods={{@project.functions}} />
     {{/if}}
 
     {{#if @project.objectLiterals}}
-      <variable-list @label="Object Literals" @variables={{@project.objectLiterals}} @showModule={{action @showModule}} />
+      <variable-list @label="Object Literals" @variables={{@project.objectLiterals}} />
     {{/if}}
 
     {{#if @project.typeAliases}}
-      <variable-list @label="Type Aliases" @variables={{@project.typeAliases}} @showModule={{action @showModule}} />
+      <variable-list @label="Type Aliases" @variables={{@project.typeAliases}} />
     {{/if}}
 
     {{#if @project.variables}}
-      <variable-list @label="Variables" @variables={{@project.variables}} @showModule={{action @showModule}} />
+      <variable-list @label="Variables" @variables={{@project.variables}} />
     {{/if}}
   </section>
 </div>

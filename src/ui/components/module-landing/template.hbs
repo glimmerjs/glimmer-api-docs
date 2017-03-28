@@ -11,7 +11,7 @@
     <h3>Extends</h3>
 
     {{#each @module.extendedTypes key="@index" as |extends|}}
-      <type-annotation @type={{extends}} @showModule={{action @showModule}} />
+      <type-annotation @type={{extends}} />
     {{/each}}
     </div>
   {{/if}}
@@ -21,7 +21,7 @@
     <h3>Implements</h3>
 
     {{#each @module.implementedTypes key="@index" as |implements|}}
-      <type-annotation @type={{implements}} @showModule={{action @showModule}} />
+      <type-annotation @type={{implements}} />
     {{/each}}
     </div>
   {{/if}}
@@ -35,17 +35,17 @@
     <div class="constructors">
       <h3>Constructor</h3>
 
-      <method-list @showModule={{action @showModule}} @methods={{@module.constructors}} />
+      <method-list @methods={{@module.constructors}} />
     </div>
   {{/if}}
 
   {{#if @module.methods}}
     <h3>Methods</h3>
 
-    <method-list @showModule={{action @showModule}} @hasMethodCategories={{@module.hasMethodCategories}} @methods={{@module.methods}} />
+    <method-list @hasMethodCategories={{@module.hasMethodCategories}} @methods={{@module.methods}} />
   {{/if}}
 
   {{#if module.properties}}
-    <variable-list @label="Properties" @variables={{@module.properties}} @showModule={{action @showModule}} />
+    <variable-list @label="Properties" @variables={{@module.properties}} />
   {{/if}}
 </section>

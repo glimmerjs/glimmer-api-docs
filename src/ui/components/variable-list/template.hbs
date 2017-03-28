@@ -6,7 +6,7 @@
       <li class="property-definition" id="variable-{{property.slug}}">
         <div class="property-title-container">
           <h5><a href="#variable-{{property.slug}}">{{property.name}}</a></h5>
-          <div class="property-type"><type-annotation @type={{property.type}} @showModule={{action @showModule}} /></div>
+          <div class="property-type"><type-annotation @type={{property.type}} /></div>
         </div>
         {{#if property.comment}}
           <p>{{property.comment.text}}</p>

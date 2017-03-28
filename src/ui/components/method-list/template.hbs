@@ -5,14 +5,14 @@
         <h4 id="method-category-{{category.slug}}">{{category.name}}</h4>
         <ul>
           {{#each category.methods key="@index" as |method|}}
-            <method-item @showModule={{action @showModule}} @method={{method}} />
+            <method-item @method={{method}} />
           {{/each}}
         </ul>
       </div>
     {{/each}}
   {{else}}
     {{#each @methods key="@index" as |method|}}
-      <method-item @showModule={{action @showModule}} @method={{method}} />
+      <method-item @method={{method}} />
     {{/each}}
   {{/if}}
 </div>
