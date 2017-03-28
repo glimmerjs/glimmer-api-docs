@@ -1,4 +1,6 @@
-<div id="top-menu"><h1 onclick={{action showIndex}}>{{model.main.title}}</h1></div>
+<div id="top-menu">
+  <h1><a href="/" onclick={{action showIndex}}>{{model.main.title}}</a></h1>
+</div>
 
 <div class="row" id="column-container">
   <div class="four columns" id="menu-container">
@@ -17,6 +19,8 @@
           showProject=(action showProject)
           showModule=(action showModule)
           }}
+    {{else if theCurrentView.notFound}}
+      <not-found @showIndex={{action showIndex}} />
     {{else}}
       <section class="content-container">
         <p>
