@@ -2,8 +2,8 @@ import Component, { tracked } from "@glimmer/component";
 import config from './../../../config/environment';
 
 // TODO: get this from environment.js instead of environment.ts
-const rootUrl = config.basePath
-const strippedRootUrl = rootUrl.split('/').filter((str) => !!str).join('/');
+const strippedRootUrl = config.basePath.split('/').filter((str) => !!str).join('/');
+const rootUrl = !!strippedRootUrl ? '/' + strippedRootUrl + '/' : '/';
 
 const DATA = window.docs;
 const MODULE_PATH_LABEL = 'modules';
@@ -335,7 +335,7 @@ export default class GlimmerApiDocs extends Component {
 
     let stateObj = { componentName, projectId, moduleId: null };
     let name = this.theCurrentView.project.name;
-    let url = `/${PROJECT_PATH_LABEL}/${projectId}`;
+    let url = `${rootUrl}${PROJECT_PATH_LABEL}/${projectId}`;
     window.history.pushState(stateObj, `${this.theCurrentView.project.name}`, url);
   }
 
@@ -352,7 +352,7 @@ export default class GlimmerApiDocs extends Component {
 
     let stateObj = { componentName, projectId, moduleId };
     let name = this.theCurrentView.project.name;
-    let url = `/api/${PROJECT_PATH_LABEL}/${projectId}/${MODULE_PATH_LABEL}/${moduleId}`;
+    let url = `${rootUrl}${PROJECT_PATH_LABEL}/${projectId}/${MODULE_PATH_LABEL}/${moduleId}`;
     window.history.pushState(stateObj, `${this.theCurrentView.project.name}`, url);
   }
 }
