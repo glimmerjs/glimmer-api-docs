@@ -12,7 +12,10 @@
       ]
     },
     {
-      "src": "repos/glimmer-application/src/"
+      "src": "repos/glimmer-application/src/",
+      "include": [
+        "Application"
+      ]
     }
   ],
   "output": "docs-source/main.json"
