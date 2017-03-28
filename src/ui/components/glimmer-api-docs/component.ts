@@ -260,7 +260,7 @@ export default class GlimmerApiDocs extends Component {
   loadFromUrl(url: string) {
     const path = removeBasePath(strippedRootUrl, url);
     const { moduleId, projectId } = this.getIdsFromPath(path);
-    if (path === rootUrl || path + '/' === rootUrl) {
+    if (path === '/' || !path) {
       this.showIndex();
     } else if (!projectId) {
       this.show404();
