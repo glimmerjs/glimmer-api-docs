@@ -52,7 +52,7 @@
               </ol>
             {{/if}}
             {{#if signature.comment}}
-              <section class="function-comment readme">
+              <div class="function-comment readme">
                 {{{signature.comment.shortText}}}
                 {{{signature.comment.text}}}
                 {{#each signature.comment.tags key="@index" as |tag|}}
@@ -61,7 +61,7 @@
                     {{{tag.text}}}
                   </p>
                 {{/each}}
-              </section>
+              </div>
             {{/if}}
           </div>
         {{/if}}
