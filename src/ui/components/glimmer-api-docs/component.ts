@@ -193,7 +193,12 @@ function toMenuProject(menu) {
       children = children.concat(set);
     }
   }
-  menu.children = children.sort((a, b) => a.name > b.name ? 1 : -1);
+  menu.children = children.sort((a, b) => a.name > b.name ? 1 : -1).map((child) => {
+    if (child.type === 'function') {
+      child.name = child.name + '()';
+    }
+    return child;
+  });
   return menu;
 }
 
