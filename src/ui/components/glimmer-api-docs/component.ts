@@ -88,7 +88,7 @@ function addViewMeta(attributes) {
     flagsMap(attributes.properties);
   }
   if (attributes.callSignatures) {
-    attributes.signatures = signatureMap(attributes.callSignatures);
+    attributes.signatures = attributes.callSignatures.map(signatureMap);
   }
   if (attributes.methods) {
     let hasMethodCategories = false;
@@ -233,7 +233,6 @@ class DocsService {
     }
 
     const inflated = toInflatedViewObject(record);
-    console.log(inflated);
     return inflated;
   }
 
