@@ -6,11 +6,11 @@
           <h5>
             <div class="access">
               {{#if @method.flags.isProtected}}
-                protected 
+                protected
               {{else if @method.flags.isPrivate}}
-                private 
+                private
               {{else}}
-                public 
+                public
               {{/if}}
             </div>
             {{#if @method.flags.isStatic}}
@@ -50,6 +50,7 @@
             {{/if}}
             {{#if signature.comment}}
               <section class="content-container readme">
+                {{{signature.comment.shortText}}}
                 {{{signature.comment.text}}}
               </section>
             {{/if}}
