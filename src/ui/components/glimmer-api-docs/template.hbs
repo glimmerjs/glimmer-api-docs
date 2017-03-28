@@ -1,10 +1,15 @@
 <div id="top-menu">
+  <button onclick={{action toggleNav}} id="menu-toggle" class="hamburger hamburger--elastic" type="button">
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button>
   <h1><a href="/" onclick={{action showIndex}}>{{model.main.title}}</a></h1>
 </div>
 
 <div class="row" id="column-container">
   <div class="four columns" id="menu-container">
-      <left-menu @data={{model.menu}} />
+    <left-menu @data={{model.menu}} />
   </div>
   <div class="eight columns" id="content-container">
     <!-- module won't be used for project-landing -->

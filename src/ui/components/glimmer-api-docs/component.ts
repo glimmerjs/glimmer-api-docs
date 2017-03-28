@@ -328,6 +328,29 @@ export default class GlimmerApiDocs extends Component {
     });
   }
 
+  showNav() {
+    const menu = document.getElementById('menu-container');
+    const hamburger = document.getElementById('menu-toggle');
+    menu.style.display = 'block';
+    hamburger.classList.add('is-active');
+  }
+
+  hideNav() {
+    const menu = document.getElementById('menu-container');
+    const hamburger = document.getElementById('menu-toggle');
+    menu.style.display = 'none';
+    hamburger.classList.remove('is-active');
+  }
+
+  toggleNav() {
+    const hamburger = document.getElementById('menu-toggle');
+    if (hamburger.classList.contains('is-active')) {
+      this.hideNav();
+    } else {
+      this.showNav();
+    }
+  }
+
   setupRouting() {
     window.onpopstate = (evt) => {
       if (evt.state) {
