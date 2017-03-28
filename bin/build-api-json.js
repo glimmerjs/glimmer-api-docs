@@ -27,4 +27,6 @@ GIT_REPOS.forEach(([repoPath, url]) => {
   });
 });
 
-execSync('jtd docs-source/docs-config.json');
+const NODE_BIN = path.join(__dirname, '..', 'node_modules', '.bin');
+
+execSync(NODE_BIN + '/jtd docs-source/docs-config.json');
