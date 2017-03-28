@@ -314,6 +314,7 @@ export default class GlimmerApiDocs extends Component {
     } else {
       stateObj = this.showProject(projectId);
     }
+    this.hideNav();
 
     window.history.pushState(stateObj, stateObj.title, `/${strippedRootUrl}${path}`);
   }
