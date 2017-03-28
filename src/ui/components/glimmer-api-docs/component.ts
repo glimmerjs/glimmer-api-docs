@@ -272,7 +272,7 @@ export default class GlimmerApiDocs extends Component {
     }
   }
 
-  showIndex(evt: any) {
+  showIndex(evt?: any) {
     if (evt) {
       evt.preventDefault();
     }
