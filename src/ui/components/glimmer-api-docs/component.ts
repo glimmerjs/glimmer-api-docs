@@ -210,6 +210,10 @@ function toMenuProject(menu) {
     menu.children = menu.children.filter((child) => menu.menu.include.indexOf(child.name) > -1 );
   }
 
+  if (menu.menu.exclude) {
+    menu.children = menu.children.filter((child) => menu.menu.exclude.indexOf(child.name) < 0 );
+  }
+
   return menu;
 }
 
