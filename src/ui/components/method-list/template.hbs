@@ -12,7 +12,7 @@
     {{/each}}
   {{else}}
     {{#each @methods key="@index" as |method|}}
-      <method-item @showModule={{action @showModule}} @method={{method}} />
+      <method-item @method={{method}} />
     {{/each}}
   {{/if}}
 </div>
