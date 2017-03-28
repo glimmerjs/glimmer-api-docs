@@ -25,6 +25,6 @@ export default class MarkdownViewer extends Component {
    * Renders the Markdown text with syntax highlighting for code blocks.
    */
   get renderedText() {
-    return MarkdownIt.renderInline(this.args.text);
+    return MarkdownIt.render(this.args.text);
   }
 };
