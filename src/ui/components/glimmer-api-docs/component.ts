@@ -281,9 +281,16 @@ export default class GlimmerApiDocs extends Component {
     });
   }
 
-  didInsertElement() {
+  setupRouting() {
+    window.onpopstate = () => {
+      this.loadFromUrl(window.location.pathname);
+    }
     this.bindInternalLinks();
     this.loadFromUrl(window.location.pathname);
+  }
+
+  didInsertElement() {
+    this.setupRouting();
   }
 
   /**
