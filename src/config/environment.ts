@@ -1,5 +1,6 @@
 export default {
   modulePrefix: 'glimmer-api-docs',
+  basePath: '/api/',
   moduleConfiguration: {
     types: {
       application: { definitiveCollection: 'main' },

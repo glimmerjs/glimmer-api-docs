@@ -1,11 +1,26 @@
 import Component, { tracked } from "@glimmer/component";
+import config from './../../../config/environment';
 
-// TODO: get this from config
-const rootUrl = '/';
+// TODO: get this from environment.js instead of environment.ts
+const rootUrl = config.basePath
+const strippedRootUrl = rootUrl.split('/').filter((str) => !!str).join('/');
 
 const DATA = window.docs;
 const MODULE_PATH_LABEL = 'modules';
 const PROJECT_PATH_LABEL = 'projects';
+
+function removeBasePath(base: string, url: string) {
+  if (base[0] === '/'){
+    base = base.substring(1);
+  }
+  if (url[0] === '/'){
+    url = url.substring(1);
+  }
+  if (base === url.substring(0, base.length)) {
+    return url.substring(base.length);
+  }
+  return url;
+}
 
 function materialize(obj) {
   if (Object.keys(obj).length !== 2 || !obj.id || !obj.type) {
@@ -242,7 +257,8 @@ export default class GlimmerApiDocs extends Component {
     };
   }
 
-  loadFromUrl(path: string) {
+  loadFromUrl(url: string) {
+    const path = removeBasePath(strippedRootUrl, url);
     const { moduleId, projectId } = this.getIdsFromPath(path);
     if (path === rootUrl || path + '/' === rootUrl) {
       this.showIndex();
