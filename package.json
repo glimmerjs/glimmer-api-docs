@@ -7,13 +7,14 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "ember build",
+    "build": "ember build --environment=production",
+    "sync": "bin/sync.sh",
     "start": "ember server",
     "test": "ember test"
   },
   "devDependencies": {
     "@glimmer/application": "^0.3.8",
-    "@glimmer/application-pipeline": "^0.3.1",
+    "@glimmer/application-pipeline": "^0.4.2",
     "@glimmer/component": "^0.3.6",
     "@glimmer/resolver": "^0.3.0",
     "broccoli-funnel": "^1.1.0",
@@ -26,5 +27,8 @@
   "engines": {
     "node": ">= 4.0"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "json-typescript-docs": "^0.1.1"
+  }
 }
