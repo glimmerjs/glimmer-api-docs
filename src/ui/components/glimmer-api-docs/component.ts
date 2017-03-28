@@ -332,14 +332,14 @@ export default class GlimmerApiDocs extends Component {
   showNav() {
     const menu = document.getElementById('menu-container');
     const hamburger = document.getElementById('menu-toggle');
-    menu.style.display = 'block';
+    menu.classList.add('is-active');
     hamburger.classList.add('is-active');
   }
 
   hideNav() {
     const menu = document.getElementById('menu-container');
     const hamburger = document.getElementById('menu-toggle');
-    menu.style.display = 'none';
+    menu.classList.remove('is-active');
     hamburger.classList.remove('is-active');
   }
 
