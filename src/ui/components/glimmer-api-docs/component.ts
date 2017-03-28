@@ -321,8 +321,10 @@ export default class GlimmerApiDocs extends Component {
 
   setupRouting() {
     window.onpopstate = (evt) => {
-      const view = this.deserializeState(evt.state);
-      this.theCurrentView = view;
+      if (evt.state) {
+        const view = this.deserializeState(evt.state);
+        this.theCurrentView = view;
+      }
     }
     this.bindInternalLinks();
     this.loadFromUrl(window.location.pathname);
