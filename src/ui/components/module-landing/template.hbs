@@ -27,8 +27,9 @@
   {{/if}}
 
   {{#if @module.comment}}
-    <markdown-viewer @text={{@module.comment.shortText}} />
-    <markdown-viewer @text={{@module.comment.text}} />
+    <section class="content-container readme">
+      {{{@module.comment.text}}}
+    </section>
   {{/if}}
 
   {{#if @module.constructors}}
