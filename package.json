@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@glimmer/application": "^0.3.8",
-    "@glimmer/application-pipeline": "^0.4.2",
+    "@glimmer/application-pipeline": "^0.4.5",
     "@glimmer/component": "^0.3.6",
     "@glimmer/resolver": "^0.3.0",
     "broccoli-funnel": "^1.1.0",

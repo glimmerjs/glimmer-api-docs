@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@glimmer/application-pipeline@^0.4.2":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@glimmer/application-pipeline/-/application-pipeline-0.4.1.tgz#4c27e2ff6626ffb9eee718f0fd2b77d2713a79ac"
+"@glimmer/application-pipeline@^0.4.5":
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/@glimmer/application-pipeline/-/application-pipeline-0.4.5.tgz#9c54d1204cc30ebc47efd44df416452d1abd83db"
   dependencies:
     "@glimmer/compiler" "^0.23.0-alpha.11"
     "@glimmer/di" "^0.2.0"
@@ -28,6 +28,9 @@
     broccoli-typescript-compiler "^1.0.1"
     broccoli-uglify-sourcemap "^1.4.0"
     ember-cli-inject-live-reload "^1.4.1"
+    ember-cli-normalize-entity-name "^1.0.0"
+    ember-cli-string-utils "^1.1.0"
+    ember-cli-valid-component-name "^1.0.0"
     handlebars "^4.0.5"
     heimdalljs-logger "^0.1.8"
     lodash.defaultsdeep "^4.6.0"
@@ -2040,7 +2043,7 @@ ember-cli-preprocess-registry@^3.0.0:
     process-relative-require "^1.0.0"
     silent-error "^1.0.0"
 
-ember-cli-string-utils@^1.0.0:
+ember-cli-string-utils@^1.0.0, ember-cli-string-utils@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ember-cli-string-utils/-/ember-cli-string-utils-1.1.0.tgz#39b677fc2805f55173735376fcef278eaa4452a1"
 
@@ -3309,9 +3312,9 @@ json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
 
-json-typescript-docs@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/json-typescript-docs/-/json-typescript-docs-0.1.1.tgz#1f87407cfe6b1094979f87eb4fe2d53abada563e"
+json-typescript-docs@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/json-typescript-docs/-/json-typescript-docs-0.2.1.tgz#107523519da54e9f3845cdc8a32b5db706979492"
   dependencies:
     jsonfile "^2.4.0"
     marked "^0.3.6"
