@@ -1,5 +1,10 @@
 import Component, { tracked } from "@glimmer/component";
 import config from './../../../config/environment';
+import { TSAttributesObject } from 'json-typescript-docs';
+
+interface EntityObject extends TSAttributesObject {
+  id: string
+}
 
 // TODO: get this from environment.js instead of environment.ts
 const strippedRootUrl = config.basePath.split('/').filter((str) => !!str).join('/');
@@ -17,7 +22,10 @@ function removeBasePath(base: string, url: string) {
     url = url.substring(1);
   }
   if (base === url.substring(0, base.length)) {
-    return url.substring(base.length);
+    url = url.substring(base.length);
+  }
+  if (url[0] !== '/'){
+    url = '/' + url;
   }
   return url;
 }
@@ -35,11 +43,11 @@ function inflateRelationship({ relationships }, key, recurse = false) {
   return v;
 }
 
-function toViewObject(obj) {
+function toViewObject(obj): EntityObject {
   return _toViewObject(obj, false);
 }
 
-function toInflatedViewObject(obj) {
+function toInflatedViewObject(obj): EntityObject {
   return _toViewObject(obj, true);
 }
 
@@ -118,14 +126,31 @@ function addViewMeta(attributes) {
   return attributes;
 }
 
-function _toViewObject({ type, id, attributes, relationships }, recurse = false) {
-  const identifier = {
+function _toViewObject({ type, id, attributes, relationships }, recurse = false): EntityObject {
+  let viewObject = {
     type,
-    id
+    id,
+    kindString: type,
+    slug: id,
+    alias: id,
+    name: id,
+    flags: {
+      isPrivate: true,
+      isProtected: true,
+      isPublic: true,
+      isStatic: true,
+      isExported: true,
+      isExternal: true,
+      isOptional: true,
+      isRest: true,
+      isNormalized: true
+    }
   };
-  let viewObject = identifier;
   if (!attributes) {
-    attributes = materialize(identifier).attributes;
+    attributes = materialize({
+      id,
+      type
+    }).attributes;
   }
   attributes = addViewMeta(attributes);
 
@@ -138,7 +163,7 @@ function _toViewObject({ type, id, attributes, relationships }, recurse = false)
     viewObject[key] = recurse ? relationship.data.map(toInflatedViewObject) : relationship.data;
   }
 
-  return viewObject;
+  return <EntityObject>viewObject;
 }
 
 function inflate({id, type, attributes, relationships }, recurse = false) {
@@ -186,7 +211,7 @@ class DocsService {
     };
   }
 
-  fetchModule(moduleId, projectId) {
+  fetchModule(moduleId, projectId): EntityObject {
     let record = this.main.included.find(({ id }) => id === moduleId);
 
     if (!record) {
@@ -202,16 +227,25 @@ class DocsService {
     return inflated;
   }
 
-  fetchProject(projectId) {
+  fetchProject(projectId): EntityObject {
     return toInflatedViewObject(this.main.included.find(({ type, id }) => type === 'projectdoc' && id === projectId));
   }
 };
 
 interface CurrentView {
+  title: string;
   componentName: string | null;
-  project;
-  module;
-  notFound?: boolean;
+  project: EntityObject;
+  module: EntityObject;
+  notFound?: boolean,
+}
+
+interface CurrentState {
+  title: string;
+  componentName: string | null;
+  project: string;
+  module: string;
+  notFound?: boolean,
 }
 
 interface ResourceIdMap {
@@ -221,6 +255,7 @@ interface ResourceIdMap {
 
 export default class GlimmerApiDocs extends Component {
   @tracked theCurrentView: CurrentView = {
+    title: '',
     componentName: null,
     project: null,
     module: null,
@@ -260,15 +295,18 @@ export default class GlimmerApiDocs extends Component {
   loadFromUrl(url: string) {
     const path = removeBasePath(strippedRootUrl, url);
     const { moduleId, projectId } = this.getIdsFromPath(path);
+    let stateObj;
     if (path === '/' || !path) {
-      this.showIndex();
+      stateObj = this.showIndex();
     } else if (!projectId) {
-      this.show404();
+      stateObj = this.show404();
     } else if(moduleId) {
-      this.showModule(projectId, moduleId);
+      stateObj = this.showModule(projectId, moduleId);
     } else {
-      this.showProject(projectId);
+      stateObj = this.showProject(projectId);
     }
+
+    window.history.pushState(stateObj, stateObj.title, `/${strippedRootUrl}${path}`);
   }
 
   bindInternalLinks() {
@@ -282,8 +320,9 @@ export default class GlimmerApiDocs extends Component {
   }
 
   setupRouting() {
-    window.onpopstate = () => {
-      this.loadFromUrl(window.location.pathname);
+    window.onpopstate = (evt) => {
+      const view = this.deserializeState(evt.state);
+      this.theCurrentView = view;
     }
     this.bindInternalLinks();
     this.loadFromUrl(window.location.pathname);
@@ -302,11 +341,13 @@ export default class GlimmerApiDocs extends Component {
 
   show404() {
     this.theCurrentView = {
+      title: `${this.model.main.title} - 404`,
       module: null,
       project: null,
       componentName: null,
       notFound: true
     }
+    return this.theCurrentView;
   }
 
   showIndex(evt?: any) {
@@ -314,12 +355,47 @@ export default class GlimmerApiDocs extends Component {
       evt.preventDefault();
     }
     this.theCurrentView = {
+      title: this.model.main.title,
       componentName: null,
       project: null,
       module: null,
       notFound: false
     }
-    window.history.pushState({}, this.model.main.title, rootUrl);
+    return this.theCurrentView;
+  }
+
+  serializeView(view: CurrentView): CurrentState {
+    const {
+      title,
+      componentName,
+      project,
+      module,
+      notFound
+    } = view;
+    return {
+      title,
+      componentName,
+      notFound,
+      project: project.slug,
+      module: module.slug
+    };
+  }
+
+  deserializeState(state: CurrentState): CurrentView {
+    const {
+      title,
+      componentName,
+      project,
+      module,
+      notFound
+    } = state;
+    return {
+      title,
+      componentName,
+      notFound,
+      project: this.docsService.fetchProject(project),
+      module: this.docsService.fetchModule(module, project)
+    };
   }
 
   showProject(projectId) {
@@ -331,28 +407,37 @@ export default class GlimmerApiDocs extends Component {
       return this.show404();
     }
 
-    this.theCurrentView = { componentName, project, module };
+    this.theCurrentView = {
+      title: `${project.name}`,
+      componentName,
+      project,
+      module
+    };
 
-    let stateObj = { componentName, projectId, moduleId: null };
     let name = this.theCurrentView.project.name;
     let url = `${rootUrl}${PROJECT_PATH_LABEL}/${projectId}`;
-    window.history.pushState(stateObj, `${this.theCurrentView.project.name}`, url);
+    return this.serializeView(this.theCurrentView);
   }
 
   showModule(projectId, moduleId) {
     const componentName = 'module-landing';
     let project = this.docsService.fetchProject(projectId);
-    let module = this.docsService.fetchModule(moduleId, projectId);;
+    let module = this.docsService.fetchModule(moduleId, projectId);
 
     if (!project || !module) {
       return this.show404();
     }
 
-    this.theCurrentView = { componentName, project, module };
+    this.theCurrentView = {
+      title: `${project.name}`,
+      componentName,
+      project,
+      module
+    };
 
     let stateObj = { componentName, projectId, moduleId };
     let name = this.theCurrentView.project.name;
     let url = `${rootUrl}${PROJECT_PATH_LABEL}/${projectId}/${MODULE_PATH_LABEL}/${moduleId}`;
-    window.history.pushState(stateObj, `${this.theCurrentView.project.name}`, url);
+    return this.serializeView(this.theCurrentView);
   }
 }
