@@ -15,7 +15,7 @@ bin/build-api-json.js
 ember build --environment=production
 mkdir -p tmp/build
 echo "cloning"
-git clone https://ember-guides-deploy-bot:${GITHUB_TOKEN}@github.com/tomdale/glimmer-website.git tmp/build/glimmer-website
+git clone https://ember-guides-deploy-bot:${GITHUB_TOKEN}@github.com/tomdale/glimmer-website.git tmp/build/glimmer-website 2>&1
 echo "done cloning"
 
 pushd tmp/build/glimmer-website
