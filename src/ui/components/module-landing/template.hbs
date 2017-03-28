@@ -4,7 +4,9 @@
     {{@module.kindString}} <h3>{{@module.name}}</h3>
   </div>
   {{#if @module.sources}}
-    <source-link @sources={{@module.sources}} />
+    {{#unless @module.isFunction}}
+      <source-link @sources={{@module.sources}} />
+    {{/unless}}
   {{/if}}
   {{#if module.extendedTypes}}
     <div class="hierarchy-meta">

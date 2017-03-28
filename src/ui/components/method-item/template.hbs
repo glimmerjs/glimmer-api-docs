@@ -38,6 +38,9 @@
         </div>
         {{#if signature.hasBody}}
           <div class="method-body">
+            {{#if signature.sources}}
+              <source-link @sources={{signature.sources}} />
+            {{/if}}
             {{#if signature.parameters}}
               <strong class="sub">Arguments</strong>
               <ol class="parameters-list">

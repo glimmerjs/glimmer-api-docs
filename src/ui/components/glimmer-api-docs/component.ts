@@ -3,7 +3,8 @@ import config from './../../../config/environment';
 import { TSAttributesObject } from 'json-typescript-docs';
 
 interface EntityObject extends TSAttributesObject {
-  id: string
+  id: string,
+  isFunction: boolean;
 }
 
 // TODO: get this from environment.js instead of environment.ts
@@ -137,6 +138,7 @@ function _toViewObject({ type, id, attributes, relationships }, recurse = false)
     slug: id,
     alias: id,
     name: id,
+    isFunction: type === 'function',
     flags: {
       isPrivate: true,
       isProtected: true,
@@ -199,7 +201,7 @@ function toMenuProject(menu) {
   menu.children = children.sort((a, b) => a.name > b.name ? 1 : -1).map((child) => {
     if (child.type === 'function') {
       //child.name = child.name + '()';
-      //child.isFunction = true;
+      child.isFunction = true;
     }
     return child;
   });
