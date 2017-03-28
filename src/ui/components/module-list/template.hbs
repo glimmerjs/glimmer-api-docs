@@ -3,7 +3,9 @@
 
   <ul class="project-list">
     {{#each @modules key="@index" as |module|}}
-      <li onclick={{action @showModule @projectId module.slug}}>{{module.name}}</li>
+      <li>
+        <entity-link @name={{module.name}} @projectId={{@projectId}} @moduleId={{module.slug}} />
+      </li>
     {{/each}}
   </ul>
 </div>
