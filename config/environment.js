@@ -66,7 +66,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.rootURL = '/api/';
   }
 
   return ENV;
