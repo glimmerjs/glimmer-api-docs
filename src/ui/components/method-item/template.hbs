@@ -49,9 +49,12 @@
               </ol>
             {{/if}}
             {{#if signature.comment}}
-              <section class="content-container readme">
+              <section class="function-comment readme">
                 {{{signature.comment.shortText}}}
                 {{{signature.comment.text}}}
+                {{#each signature.comment.tags key="@index" as |tag|}}
+                  {{{tag.text}}}
+                {{/each}}
               </section>
             {{/if}}
           </div>
