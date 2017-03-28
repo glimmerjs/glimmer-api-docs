@@ -1,5 +1,5 @@
 <div class="sources">
     {{#each @sources key="@index" as |source|}}
-    <a href="{{source.url}}">{{source.fileName}}</a>
+    <a href="{{source.url}}">{{source.fileName}}:{{source.line}}</a>
     {{/each}}
 </div>
