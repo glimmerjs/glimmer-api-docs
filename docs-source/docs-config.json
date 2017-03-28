@@ -6,16 +6,20 @@
   "projects": [
     {
       "src": "repos/glimmer-component/src/",
-      "include": [
-        "Component",
-        "tracked"
-      ]
+      "menu": {
+        "include": [
+          "Component",
+          "tracked"
+        ]
+      }
     },
     {
       "src": "repos/glimmer-application/src/",
-      "include": [
-        "Application"
-      ]
+      "menu": {
+        "include": [
+          "Application"
+        ]
+      }
     }
   ],
   "output": "docs-source/main.json"

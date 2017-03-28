@@ -205,6 +205,11 @@ function toMenuProject(menu) {
     }
     return child;
   });
+
+  if (menu.menu.include) {
+    menu.children = menu.children.filter((child) => menu.menu.include.indexOf(child.name) > -1 );
+  }
+
   return menu;
 }
 
