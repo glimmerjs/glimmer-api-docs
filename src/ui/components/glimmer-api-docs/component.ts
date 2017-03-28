@@ -87,6 +87,9 @@ function addViewMeta(attributes) {
   if (attributes.properties) {
     flagsMap(attributes.properties);
   }
+  if (attributes.callSignatures) {
+    attributes.signatures = signatureMap(attributes.callSignatures);
+  }
   if (attributes.methods) {
     let hasMethodCategories = false;
 
@@ -195,7 +198,8 @@ function toMenuProject(menu) {
   }
   menu.children = children.sort((a, b) => a.name > b.name ? 1 : -1).map((child) => {
     if (child.type === 'function') {
-      child.name = child.name + '()';
+      //child.name = child.name + '()';
+      //child.isFunction = true;
     }
     return child;
   });
@@ -229,6 +233,7 @@ class DocsService {
     }
 
     const inflated = toInflatedViewObject(record);
+    console.log(inflated);
     return inflated;
   }
 

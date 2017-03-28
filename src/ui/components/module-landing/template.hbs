@@ -45,6 +45,12 @@
     <method-list @hasMethodCategories={{@module.hasMethodCategories}} @methods={{@module.methods}} />
   {{/if}}
 
+  {{#if @module.signatures}}
+    <div class="methods-list">
+      <method-item @method={{@module}} />
+    </div>
+  {{/if}}
+
   {{#if module.properties}}
     <variable-list @label="Properties" @variables={{@module.properties}} />
   {{/if}}

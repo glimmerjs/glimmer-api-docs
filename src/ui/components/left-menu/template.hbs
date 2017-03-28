@@ -5,7 +5,7 @@
     <entity-link @name={{project.name}} @projectId={{project.slug}} />
     <ul class="menu vertical nested">
       {{#each project.children key="@index" as |child|}}
-        <li>
+        <li class="{{child.type}}">
           <entity-link @name={{child.name}} @projectId={{project.slug}} @moduleId={{child.slug}} />
         </li>
       {{/each}}
