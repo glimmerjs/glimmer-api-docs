@@ -388,7 +388,7 @@ export default class GlimmerApiDocs extends Component {
       componentName,
       notFound,
       project: project.slug,
-      module: module.slug
+      module: module && module.slug
     };
   }
 
