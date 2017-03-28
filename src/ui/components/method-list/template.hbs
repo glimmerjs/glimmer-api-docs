@@ -12,7 +12,6 @@
     {{/each}}
   {{else}}
     {{#each @methods key="@index" as |method|}}
-      <div>Methods: {{method.length}}</div>
       <method-item @showModule={{action @showModule}} @method={{method}} />
     {{/each}}
   {{/if}}
