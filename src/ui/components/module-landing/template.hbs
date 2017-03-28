@@ -8,7 +8,7 @@
   {{/if}}
   {{#if module.extendedTypes}}
     <div class="hierarchy-meta">
-    <h3>Extends</h3>
+    <strong>Extends</strong>
 
     {{#each @module.extendedTypes key="@index" as |extends|}}
       <type-annotation @type={{extends}} />
@@ -18,7 +18,7 @@
 
   {{#if @module.implementedTypes}}
     <div class="hierarchy-meta">
-    <h3>Implements</h3>
+    <strong>Implements</strong>
 
     {{#each @module.implementedTypes key="@index" as |implements|}}
       <type-annotation @type={{implements}} />

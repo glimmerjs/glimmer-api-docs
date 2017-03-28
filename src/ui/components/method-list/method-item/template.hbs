@@ -2,24 +2,26 @@
   <ol class="signatures-list">
     {{#each @method.signatures key="@index" as |signature|}}
       <li>
-        <div class="access">
-          {{#if @method.flags.isProtected}}
-            Protected
-          {{/if}}
-        </div>
         <div class="method-signature">
           <h5>
+            <div class="access">
+              {{#if @method.flags.isProtected}}
+                protected 
+              {{else if @method.flags.isPrivate}}
+                private 
+              {{else}}
+                public 
+              {{/if}}
+            </div>
+            {{#if @method.flags.isStatic}}
+              <div class="signature-modifiers">
+                static
+              </div>
+            {{/if}}
             <a href="#method-{{@method.slug}}">
-              <span class="signature-modifiers">
-                {{#if @method.flags.isStatic}}
-                  static
-                {{/if}}
-                method
-              </span>
               {{signature.name}}
             </a>
           </h5>
-
           <ol class="parameters">
             {{#if signature.parameters}}
               {{#each signature.parameters key="@index" as |param|}}
