@@ -7,9 +7,7 @@
     "moduleResolution": "node",
     "experimentalDecorators": true
   },
-  "exclude": [
-    "node_modules",
-    "tmp",
-    "dist"
+  "include": [
+    "src/**/*.ts"
   ]
 }
