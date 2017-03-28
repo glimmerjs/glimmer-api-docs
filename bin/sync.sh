@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
 
 echo "setting git credentials"
 git config --global user.email "noreply@emberjs.com"
@@ -9,7 +10,9 @@ git config --global user.name "Tomster McTomster"
 echo "Cleaning build directories"
 rm -rf tmp/build
 
-ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
+echo "pulling latest git repositories"
+$ROOT_DIR/bin/build-api-json.js
+
 
 $ROOT_DIR/node_modules/.bin/ember build --environment=production
 mkdir -p tmp/build
