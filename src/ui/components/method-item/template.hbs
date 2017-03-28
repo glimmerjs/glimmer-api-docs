@@ -44,6 +44,9 @@
                 {{#each signature.parameters key="@index" as |param|}}
                 <li>
                   {{param.name}}: <type-annotation @type={{param.typeInfo}} />
+                  {{#if param.comment.text}}
+                    {{{param.comment.text}}}
+                  {{/if}}
                 </li>
                 {{/each}}
               </ol>
