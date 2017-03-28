@@ -1,0 +1,74 @@
+.module-landing {
+  padding: 40px;
+  font-size: 0.9em;
+  line-height: 1.4;
+  color: #444;
+  max-width: 600px;
+  border-top: 1px solid #DDD;
+}
+
+.module-landing .module-header {
+  color: #888;
+  font-size: 3.0rem;
+  line-height: 1.3;
+  letter-spacing: -.1rem;
+  margin: 0px 0px 20px 0px;
+}
+
+.module-landing .module-kind {
+  font-family: "HelveticaNeue-UltraLight", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+.module-landing .module-header h3 {
+  font-size: 3.0rem;
+  display: inline;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+.module-landing a {
+  color: #2153A6;
+}
+
+.module-landing code {
+  font-family: Menlo, Monaco, monospace;
+  font-size: 0.9em;
+}
+
+.module-landing h3 {
+  /*font-family: "HelveticaNeue-Thin", "Helvetica Neue Thin", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; */
+  font-size: 2.3rem;
+  letter-spacing: 0;
+  margin: 1.2em 0 0.3em 0;
+  padding: 0;
+}
+
+.module-landing .intro {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-size: 1.3em;
+  line-height: 1.4em;
+  margin-bottom: 30px;
+}
+
+.module-landing pre {
+  background-color: #f6f8fa;
+  border-radius: 6px;
+  padding: 13px;
+}
+
+.module-landing ol {
+  list-style-position: inside;
+  margin-left: 8px;
+}
+
+.module-landing li {
+  margin: 7px 0;
+}
+
+.module-landing .overview h2 {
+  font-family: "HelveticaNeue-Thin", "Helvetica Neue Thin", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-size: 2.0rem;
+  letter-spacing: 0;
+  margin: 1.2em 0 0.3em;
+}

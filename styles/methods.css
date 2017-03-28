@@ -10,3 +10,34 @@
 
 .method-category h4 {
 }
+
+.methods-list ol.signatures-list {
+  margin-left: 0;
+}
+
+.method-signature, .property-definition {
+  font-family: Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
+  font-size: 100%;
+}
+
+.method-signature h5 {
+  display: inline;
+  letter-spacing: 0;
+}
+
+.method-signature .parameters {
+  display: inline;
+}
+
+.return-type, .property-type {
+  margin-left: 0;
+  color: #6987C9;
+}
+
+.return-type a, .property-type a {
+  color: #6987C9;
+}
+
+.method-body {
+  margin-top: 17px;
+}

@@ -1,15 +1,16 @@
-<ul class="vertical menu" data-accordion-menu>
-
+<ul class="left-menu">
   {{#each @data key="@index" as |project|}}
-  <li>
-    <entity-link @name={{project.name}} @projectId={{project.slug}} />
-    <ul class="menu vertical nested">
-      {{#each project.children key="@index" as |child|}}
-        <li>
-          <entity-link @name={{child.name}} @projectId={{project.slug}} @moduleId={{child.slug}} />
-        </li>
-      {{/each}}
-    </ul>
-  </li>
+    <li class="package">
+      <a href="#" onclick={{action @showProject project.id}}>{{project.name}}</a>
+      <ul class="module">
+        {{#each project.children key="@index" as |child|}}
+          <li>
+            <a href="#" onclick={{action @showModule project.id child.slug}}>
+              {{child.name}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </li>
   {{/each}}
 </ul>

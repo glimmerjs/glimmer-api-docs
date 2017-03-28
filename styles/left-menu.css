@@ -1,0 +1,53 @@
+.left-menu {
+  font-family: Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
+  font-size: 0.8em;
+  border-right: 1px solid #DDD;
+  flex-basis: auto;
+  /* default value */
+  flex-grow: 1;
+  min-width: 50px;
+  max-width: 300px;
+  bottom: 0px;
+  top: 0px;
+  background-color: #F9F9F9;
+  top: 0px;
+  bottom: 0px;
+  padding: 10px 17px;
+}
+
+.left-menu ul {
+  padding: 0px 14px;
+  margin: 0px 10px 12px 0px;
+}
+
+.left-menu .package > a {
+  font-weight: 800;
+}
+
+.left-menu .package > a:hover {
+  font-weight: 800;
+  color: #F5835F;
+}
+
+.left-menu .module a {
+  font-size: 0.8em;
+}
+
+.left-menu .module a:hover {
+  font-weight: 800;
+  color: #F5835F;
+}
+
+.left-menu ul ul {
+  padding-left: 10px;
+  border-left: 3px solid #DDD;
+}
+
+.left-menu li {
+  list-style: none;
+}
+
+.left-menu a {
+  color: #444;
+  text-decoration: none;
+}

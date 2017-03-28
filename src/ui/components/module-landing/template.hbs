@@ -1,7 +1,6 @@
-<section class="content-container">
-  <h5 class="project-breadcrumb" onclick={{action @showProject project.slug}}></h5>
+<section class="content-container module-landing">
   <div class="module-header">
-    {{@module.kindString}} <h3>{{@module.name}}</h3>
+    <span class="module-kind">{{@module.kindString}}</span> <h3>{{@module.name}}</h3>
   </div>
   {{#if @module.sources}}
     <source-link @sources={{@module.sources}} />
@@ -27,8 +26,11 @@
   {{/if}}
 
   {{#if @module.comment}}
-    <markdown-viewer @text={{@module.comment.shortText}} />
-    <markdown-viewer @text={{@module.comment.text}} />
+    <div class="overview">
+      <h3>Overview</h3>
+      <markdown-viewer class="intro" @text={{@module.comment.shortText}} />
+      <markdown-viewer @text={{@module.comment.text}} />
+    </div>
   {{/if}}
 
   {{#if @module.constructors}}

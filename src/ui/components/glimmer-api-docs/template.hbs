@@ -3,10 +3,11 @@
 </div>
 
 <div class="row" id="column-container">
-  <div class="four columns" id="menu-container">
-      <left-menu @data={{model.menu}} />
-  </div>
-  <div class="eight columns" id="content-container">
+  <left-menu
+      @data={{model.menu}}
+      @showProject={{action showProject}}
+      @showModule={{action showModule}} />
+  <div id="content-container">
     <!-- module won't be used for project-landing -->
     {{#if theCurrentView.componentName}}
       {{component theCurrentView.componentName
@@ -19,7 +20,10 @@
     {{else}}
       <section class="content-container">
         <p>
-          {{model.main.intro}}
+          <div>
+            <p>Welcome to the Glimmer API documentation.</p>
+            <p>Choose a project or module from the table of contents to get started.</p>
+          </div>
         </p>
       </section>
     {{/if}}
