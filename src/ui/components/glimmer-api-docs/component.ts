@@ -327,6 +327,7 @@ export default class GlimmerApiDocs extends Component {
     }
     this.hideNav();
 
+    document.title = stateObj.title;
     window.history.pushState(stateObj, stateObj.title, `/${strippedRootUrl}${path}`);
   }
 
@@ -454,7 +455,7 @@ export default class GlimmerApiDocs extends Component {
     }
 
     this.theCurrentView = {
-      title: `${project.name}`,
+      title: `${this.model.main.title} - ${project.name}`,
       componentName,
       project,
       module
@@ -475,7 +476,7 @@ export default class GlimmerApiDocs extends Component {
     }
 
     this.theCurrentView = {
-      title: `${project.name}`,
+      title: `${this.model.main.title} - ${module.name}`,
       componentName,
       project,
       module

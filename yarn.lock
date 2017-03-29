@@ -282,11 +282,7 @@ anymatch@^1.3.0:
     arrify "^1.0.0"
     micromatch "^2.1.5"
 
-aproba@^1.0.3:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.1.1.tgz#95d3600f07710aa0e9298c726ad5ecf2eacbabab"
-
-aproba@~1.0.4:
+aproba@^1.0.3, aproba@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.0.4.tgz#2713680775e7614c8ba186c065d4e2e52d1072c0"
 
@@ -3422,8 +3418,8 @@ json-stringify-safe@~5.0.1:
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
 
 json-typescript-docs@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/json-typescript-docs/-/json-typescript-docs-0.3.2.tgz#481a382546718102ba754ee4c0d1da28ecb249b2"
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/json-typescript-docs/-/json-typescript-docs-0.3.3.tgz#a1b4188cf88ff86bfb84a3e23458d2081d8c8fcf"
   dependencies:
     jsonfile "^2.4.0"
     marked "^0.3.6"
