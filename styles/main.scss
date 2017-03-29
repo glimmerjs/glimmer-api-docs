@@ -425,8 +425,12 @@ strong {
   }
 }
 
-.project-breadcrumb a {
-  color: #999;
+.project-breadcrumb {
+  margin-bottom: 8px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  a {
+    color: #999;
+  }
 }
 
 @media screen and (min-width: 800px) and (max-width: 1200px) {

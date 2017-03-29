@@ -1,5 +1,7 @@
 <section class="content-container">
-  <h5 class="project-breadcrumb" onclick={{action @showProject project.slug}}></h5>
+  <h5 class="project-breadcrumb">
+    <entity-link @name={{@project.name}} @projectId={{@project.slug}} />
+  </h5>
   <div class="module-header">
     {{@module.kindString}} <h3>{{@module.name}}</h3>
   </div>
