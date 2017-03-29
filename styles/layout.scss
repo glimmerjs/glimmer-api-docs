@@ -1,0 +1,135 @@
+#top-menu {
+  border-bottom: 1px solid #DDD;
+  a {
+    text-decoration: none;
+    color: #444;
+  }
+  h1 {
+    font-size: 120%;
+    font-weight: 600;
+    margin: 5px 10px;
+    padding: 5px;
+    letter-spacing: 0.05em;
+    font-size: 1.75rem;
+    font-style: italic;
+    text-transform: lowercase;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: Roboto,-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
+    line-height: 1.5;
+    &::before {
+      background-color: #F5835F;
+      background-image: url(https://glimmerjs.com/images/logo.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 2rem;
+      border-radius: 50%;
+      content: '';
+      display: inline-block;
+      height: 2.75rem;
+      margin-right: 0.75rem;
+      vertical-align: middle;
+      width: 2.75rem;
+    }
+  }
+}
+
+body, html {
+  height: 100%;
+}
+
+#app {
+  height: 100%;
+  display: flex;
+}
+
+#column-container {
+  display: flex;
+}
+
+#app {
+  flex-direction: column;
+}
+
+#column-container {
+  flex: 1;
+  > div {
+    overflow-y: auto;
+  }
+}
+
+#app-container {
+  flex: 1;
+}
+
+#menu-container {
+  border-right: 1px solid #DDD;
+  flex-basis: auto;
+  /* default value */
+  flex-grow: 1;
+  min-width: 50px;
+  max-width: 300px;
+  font-size: 120%;
+  bottom: 0px;
+  top: 0px;
+  background-color: #F9F9F9;
+  top: 0px;
+  bottom: 0px;
+  padding: 10px 0px;
+  ul {
+    padding: 0px 14px;
+    margin: 0px 10px 12px 0px;
+    ul {
+      padding-left: 10px;
+      border-left: 3px solid #DDD;
+      li {
+        font-size: 80%;
+        &.function::after {
+          margin-left: -4px;
+          letter-spacing: -0.1em;
+          content: "()";
+          color: #888;
+          font-family: Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
+        }
+      }
+    }
+  }
+  li {
+    list-style: none;
+  }
+  a {
+    color: #444;
+    text-decoration: none;
+  }
+}
+
+#content-container {
+  bottom: 0px;
+  top: 0px;
+  background-color: #FFF;
+  flex: 3;
+}
+
+#footer {
+  border-top: 1px solid #DDD;
+  padding: 10px 16px;
+  min-height: 28px;
+  color: #999;
+  font-size: 85%;
+
+  .copyright {
+    float: right;
+  }
+
+  .links {
+    float: left;
+    display: flex;
+    li {
+      list-style: none;
+      margin-right: 8px;
+      a {
+        color: #555;
+      }
+    }
+  }
+}
