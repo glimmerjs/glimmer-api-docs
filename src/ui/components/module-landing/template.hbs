@@ -8,7 +8,7 @@
       <source-link @sources={{@module.sources}} />
     {{/unless}}
   {{/if}}
-  {{#if module.extendedTypes}}
+  {{#if @module.extendedTypes}}
     <div class="hierarchy-meta">
     <strong>Extends</strong>
 
@@ -54,7 +54,7 @@
     </div>
   {{/if}}
 
-  {{#if module.properties}}
+  {{#if @module.properties}}
     <variable-list @label="Properties" @variables={{@module.properties}} />
   {{/if}}
 </section>
