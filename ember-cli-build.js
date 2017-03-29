@@ -37,7 +37,7 @@ module.exports = function(defaults) {
     destDir: '/assets/docs'
   });
 
-  let styles = new compileSass('styles/sass', {
+  let styles = new compileSass('styles', {
     fullException: false,
     cssDir: '/assets/style',
     sourceFiles: ['main.scss']
