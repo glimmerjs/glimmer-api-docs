@@ -468,6 +468,7 @@ h5 a {
 
 .module-header {
   color: #888;
+  text-transform: lowercase;
   font-size: 3.0rem;
   line-height: 1.3;
   letter-spacing: -.1rem;
@@ -475,6 +476,7 @@ h5 a {
   h3 {
     display: inline;
     color: #222;
+    text-transform: none;
   }
 }
 
