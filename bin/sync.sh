@@ -13,6 +13,9 @@ rm -rf tmp/build
 echo "pulling latest git repositories"
 $ROOT_DIR/bin/build-api-json.js
 
+echo "Installing node-sass"
+# See https://github.com/sass/node-sass/issues/1579#issuecomment-273512246
+npm install node-sass --no-bin-links
 
 $ROOT_DIR/node_modules/.bin/ember build --environment=production
 mkdir -p tmp/build
