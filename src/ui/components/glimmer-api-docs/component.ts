@@ -1,5 +1,4 @@
 import Component, { tracked } from "@glimmer/component";
-import config from './../../../config/environment';
 import { TSAttributesObject } from 'json-typescript-docs';
 
 interface EntityObject extends TSAttributesObject {
@@ -7,8 +6,9 @@ interface EntityObject extends TSAttributesObject {
   isFunction: boolean;
 }
 
-// TODO: get this from environment.js instead of environment.ts
-const strippedRootUrl = config.basePath.split('/').filter((str) => !!str).join('/');
+// TODO: get this from config
+const basePath = '/api/';
+const strippedRootUrl = basePath.split('/').filter((str) => !!str).join('/');
 const rootUrl = !!strippedRootUrl ? '/' + strippedRootUrl + '/' : '/';
 
 const DATA = window.docs;

@@ -3,7 +3,6 @@ const json = require('broccoli-json-module');
 const Funnel = require('broccoli-funnel');
 const Rollup = require('broccoli-rollup');
 const merge = require('broccoli-merge-trees');
-const compileSass = require('broccoli-eyeglass');
 
 module.exports = function(defaults) {
   var app = new GlimmerApp(defaults, {
@@ -37,12 +36,6 @@ module.exports = function(defaults) {
     destDir: '/assets/docs'
   });
 
-  let styles = new compileSass('styles', {
-    fullException: false,
-    cssDir: '/assets/style',
-    sourceFiles: ['main.scss']
-  });
-
-  return merge([app.toTree(), extraAssets, styles]);
+  return merge([app.toTree(), extraAssets]);
   // return app.toTree();
 };
