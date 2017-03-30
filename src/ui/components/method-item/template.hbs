@@ -56,7 +56,6 @@
             {{/if}}
             {{#if signature.comment}}
               <div class="function-comment readme">
-                {{{signature.comment.shortText}}}
                 {{{signature.comment.text}}}
                 {{#each signature.comment.tags key="@index" as |tag|}}
                   <strong>{{tag.tagName}}</strong>
