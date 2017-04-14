@@ -4,7 +4,8 @@ module.exports = function(environment) {
   let ENV = {
     rootURL: '/api/',
     modulePrefix: 'glimmer-api-docs',
-    environment: environment
+    environment: environment,
+    locationType: 'auto'
   };
 
   return ENV;
