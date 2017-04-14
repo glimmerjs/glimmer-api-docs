@@ -1,5 +1,12 @@
 import Component from '@glimmer/component';
 
+interface Window {
+  hljs: any;
+  markdownit: any;
+}
+
+declare var window: Window;
+
 const hljs = window.hljs;
 const MarkdownIt = window.markdownit({
   highlight(str, lang) {
@@ -14,6 +21,9 @@ const MarkdownIt = window.markdownit({
 });
 
 export default class MarkdownViewer extends Component {
+  args: {
+    text: (string) => void
+  };
 
   /**
    * Property that contains the Markdown with the documentation that needs to be rendered.

@@ -1,9 +1,17 @@
 import { TSAttributesObject } from 'json-typescript-docs';
 
+interface Window {
+  docs: any;
+}
+
+declare var window: Window;
+
 const DATA = window.docs;
 
 export interface EntityObject extends TSAttributesObject {
-  id: string,
+  id: string;
+  name: string;
+  slug: string;
   isFunction: boolean;
 }
 
