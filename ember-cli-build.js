@@ -38,11 +38,6 @@ module.exports = function(defaults) {
     destDir: '/assets/docs'
   });
 
-  let styles = concat('styles', {
-    inputFiles: ['**/*.css'],
-    outputFile: 'app.css'
-  });
-
   let worker = typescript('workers', {
     tsconfig: {
       compilerOptions: {
@@ -52,14 +47,5 @@ module.exports = function(defaults) {
     }
   });
 
-  // worker = new Rollup(workers, {
-  //   rollup: {
-  //     entry: 'service.js',
-  //     format: 'es',
-  //     dest: 'service.js'
-  //   }
-  // });
-
-  return merge([app.toTree(), extraAssets, styles, worker]);
-  // return app.toTree();
+  return merge([app.toTree(), extraAssets, worker]);
 };
