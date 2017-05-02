@@ -3,6 +3,8 @@ const json = require('broccoli-json-module');
 const Funnel = require('broccoli-funnel');
 const Rollup = require('broccoli-rollup');
 const merge = require('broccoli-merge-trees');
+const concat = require('broccoli-concat');
+const typescript = require('broccoli-typescript-compiler');
 
 module.exports = function(defaults) {
   var app = new GlimmerApp(defaults, {
@@ -36,6 +38,14 @@ module.exports = function(defaults) {
     destDir: '/assets/docs'
   });
 
-  return merge([app.toTree(), extraAssets]);
-  // return app.toTree();
+  let worker = typescript('workers', {
+    tsconfig: {
+      compilerOptions: {
+        module: 'es6',
+        target: 'es6'
+      }
+    }
+  });
+
+  return merge([app.toTree(), extraAssets, worker]);
 };
