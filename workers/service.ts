@@ -22,15 +22,18 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log('fetching', event);
+  let request = event.request;
+  if (/api\/projects\//.test(request.url)) {
+    request = new Request('/api/');
+  }
   event.respondWith(
-    caches.match(event.request)
+    caches.match(request)
       .then(function(response) {
         // Cache hit - return response
         if (response) {
           return response;
         }
-        return fetch(event.request);
+        return fetch(request);
       }
     )
   );
