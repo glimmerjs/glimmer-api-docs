@@ -1,12 +1,13 @@
-var CACHE_NAME = 'my-site-cache-v1';
+var CACHE_NAME = 'glimmer-api-docs';
 var urlsToCache = [
   '/api/',
   'app.css',
   'app.js',
   'assets/docs/main.js',
   'https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.3.1/markdown-it.js',
-  'http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js',
-  'http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/typescript.min.js'
+  'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/typescript.min.js',
+  'https://fonts.googleapis.com/css?family=Roboto|Robot+Mono'
 ];
 
 self.addEventListener('install', function(event) {
@@ -21,6 +22,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
+  console.log('fetching', event);
   event.respondWith(
     caches.match(event.request)
       .then(function(response) {
