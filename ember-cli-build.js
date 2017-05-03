@@ -47,5 +47,9 @@ module.exports = function(defaults) {
     }
   });
 
-  return merge([app.toTree(), extraAssets, worker]);
+  let publicAssets = new Funnel('public', {
+    destDir: '/assets'
+  });
+
+  return merge([app.toTree(), extraAssets, publicAssets, worker]);
 };
