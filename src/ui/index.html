@@ -26,7 +26,25 @@
     <link rel="apple-touch-icon" type="image/png" sizes="64x64" href="https://glimmerjs.com/images/logo.png">
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div id="top-menu">
+        <button class="hamburger hamburger--elastic" id="menu-toggle" type="button">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+        <h1><a href="/api/">glimmer</a></h1>
+      </div>
+      <section id="footer">
+        <ol class="links">
+          <li><a href="/">Glimmer Home</a></li>
+          <li><a href="/api/">Glimmer API</a></li>
+        </ol>
+        <div class="copyright">
+          ©2017 Ember.js
+        </div>
+      </section>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.3.1/markdown-it.js" integrity="sha256-klTnFwj2rbg4Hl1TfvF7MlndQCHsicH5G/NWhwx5uwU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/typescript.min.js"></script>
@@ -34,4 +52,3 @@
     <script src="/api/app.js"></script>
   </body>
 </html>
-

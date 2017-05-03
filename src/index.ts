@@ -16,4 +16,7 @@ app.registerInitializer({
 
 app.boot();
 
+while(containerElement.firstChild) {
+  containerElement.removeChild(containerElement.firstChild);
+}
 app.renderComponent('glimmer-api-docs', containerElement, null);
