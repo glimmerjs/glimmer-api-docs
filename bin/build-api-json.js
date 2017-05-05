@@ -22,7 +22,7 @@ GIT_REPOS.forEach(([repoPath, url]) => {
       cwd: 'repos'
     });
   }
-  execSync('git pull --rebase', {
+  execSync('git pull --rebase && yarn --pure-lockfile', {
     cwd: path.join('repos', repoPath)
   });
 });
