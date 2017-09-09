@@ -5,8 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const GIT_REPOS = [
-  ['glimmer-component', 'https://github.com/glimmerjs/glimmer-component.git'],
-  ['glimmer-application', 'https://github.com/glimmerjs/glimmer-application.git']
+  ['glimmer.js', 'https://github.com/glimmerjs/glimmer.js.git']
 ];
 
 try {
