@@ -6,7 +6,7 @@
   },
   "projects": [
     {
-      "src": "repos/glimmer-component/src/",
+      "src": "repos/glimmer.js/packages/@glimmer/component/src/",
       "menu": {
         "include": [
           "Component",
@@ -15,7 +15,7 @@
       }
     },
     {
-      "src": "repos/glimmer-application/src/",
+      "src": "repos/glimmer.js/packages/@glimmer/application/src/",
       "menu": {
         "include": [
           "Application"
