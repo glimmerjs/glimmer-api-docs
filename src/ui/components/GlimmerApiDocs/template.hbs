@@ -9,7 +9,7 @@
 
 <div class="row" id="column-container">
   <div class="four columns" id="menu-container">
-    <left-menu @data={{model.menu}} />
+    <LeftMenu @data={{model.menu}} />
   </div>
   <div class="eight columns" id="content-container">
     <!-- module won't be used for project-landing -->
@@ -20,7 +20,7 @@
           showProject=(action showProject)
           }}
     {{else if theCurrentView.notFound}}
-      <not-found @showIndex={{action showIndex}} />
+      <NotFound @showIndex={{action showIndex}} />
     {{else}}
       <section class="content-container">
         <h1>{{model.main.title}}</h1>

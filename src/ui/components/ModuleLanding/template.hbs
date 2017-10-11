@@ -1,13 +1,13 @@
 <section class="content-container">
   <h5 class="project-breadcrumb">
-    <entity-link @name={{@project.name}} @projectId={{@project.slug}} />
+    <EntityLink @name={{@project.name}} @projectId={{@project.slug}} />
   </h5>
   <div class="module-header">
     {{@module.kindString}} <h3>{{@module.name}}</h3>
   </div>
   {{#if @module.sources}}
     {{#unless @module.isFunction}}
-      <source-link @sources={{@module.sources}} />
+      <SourceLink @sources={{@module.sources}} />
     {{/unless}}
   {{/if}}
   {{#if @module.extendedTypes}}
@@ -15,7 +15,7 @@
     <strong>Extends</strong>
 
     {{#each @module.extendedTypes key="@index" as |extends|}}
-      <type-annotation @type={{extends}} />
+      <TypeAnnotation @type={{extends}} />
     {{/each}}
     </div>
   {{/if}}
@@ -25,7 +25,7 @@
     <strong>Implements</strong>
 
     {{#each @module.implementedTypes key="@index" as |implements|}}
-      <type-annotation @type={{implements}} />
+      <TypeAnnotation @type={{implements}} />
     {{/each}}
     </div>
   {{/if}}
@@ -40,23 +40,23 @@
     <div class="constructors">
       <h4>Constructor</h4>
 
-      <method-list @methods={{@module.constructors}} />
+      <MethodList @methods={{@module.constructors}} />
     </div>
   {{/if}}
 
   {{#if @module.methods}}
     <h4>Methods</h4>
 
-    <method-list @hasMethodCategories={{@module.hasMethodCategories}} @methods={{@module.methods}} />
+    <MethodList @hasMethodCategories={{@module.hasMethodCategories}} @methods={{@module.methods}} />
   {{/if}}
 
   {{#if @module.signatures}}
     <div class="methods-list">
-      <method-item @method={{@module}} />
+      <MethodItem @method={{@module}} />
     </div>
   {{/if}}
 
   {{#if @module.properties}}
-    <variable-list @label="Properties" @variables={{@module.properties}} />
+    <VariableList @label="Properties" @variables={{@module.properties}} />
   {{/if}}
 </section>

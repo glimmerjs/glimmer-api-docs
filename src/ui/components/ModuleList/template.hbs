@@ -4,7 +4,7 @@
   <ul class="project-list">
     {{#each @modules key="@index" as |module|}}
       <li>
-        <entity-link @name={{module.name}} @projectId={{@projectId}} @moduleId={{module.slug}} />
+        <EntityLink @name={{module.name}} @projectId={{@projectId}} @moduleId={{module.slug}} />
       </li>
     {{/each}}
   </ul>

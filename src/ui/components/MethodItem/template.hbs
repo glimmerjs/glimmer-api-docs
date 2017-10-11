@@ -33,20 +33,20 @@
           </ol>
 
           <div class="return-type">
-            <type-annotation @type={{signature.typeInfo}} />
+            <TypeAnnotation @type={{signature.typeInfo}} />
           </div>
         </div>
         {{#if signature.hasBody}}
           <div class="method-body">
             {{#if signature.sources}}
-              <source-link @sources={{signature.sources}} />
+              <SourceLink @sources={{signature.sources}} />
             {{/if}}
             {{#if signature.parameters}}
               <strong class="sub">Arguments</strong>
               <ol class="parameters-list">
                 {{#each signature.parameters key="@index" as |param|}}
                 <li>
-                  {{param.name}}: <type-annotation @type={{param.typeInfo}} />
+                  {{param.name}}: <TypeAnnotation @type={{param.typeInfo}} />
                   {{#if param.comment.text}}
                     {{{param.comment.text}}}
                   {{/if}}
