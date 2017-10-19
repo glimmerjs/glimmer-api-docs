@@ -20,7 +20,7 @@ npm install node-sass --no-bin-links --no-save
 $ROOT_DIR/node_modules/.bin/ember build --environment=production
 mkdir -p tmp/build
 echo "cloning"
-git clone https://ember-guides-deploy-bot:${GITHUB_TOKEN}@github.com/glimmerjs/glimmer-website.git tmp/build/glimmer-website 2>&1
+git clone https://github.com/glimmerjs/glimmer-website.git tmp/build/glimmer-website 2>&1
 echo "done cloning"
 
 pushd tmp/build/glimmer-website
