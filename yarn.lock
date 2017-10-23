@@ -43,15 +43,14 @@
     silent-error "^1.1.0"
     walk-sync "^0.3.1"
 
-"@glimmer/application@^0.8.0-alpha.10":
-  version "0.8.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@glimmer/application/-/application-0.8.0-alpha.10.tgz#829a84e6d3e52af9fb4faed30f73f3a8c5847013"
+"@glimmer/application@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@glimmer/application/-/application-0.8.0.tgz#8c78019fb78a62ede09c73ea8176052e59e281d8"
   dependencies:
     "@glimmer/compiler" "^0.29.8"
     "@glimmer/di" "^0.1.9"
     "@glimmer/env" "^0.1.7"
     "@glimmer/interfaces" "^0.29.8"
-    "@glimmer/object-reference" "^0.29.8"
     "@glimmer/opcode-compiler" "^0.29.8"
     "@glimmer/reference" "^0.29.8"
     "@glimmer/resolver" "^0.3.0"
@@ -74,9 +73,9 @@
     "@glimmer/wire-format" "^0.29.8"
     simple-html-tokenizer "^0.4.1"
 
-"@glimmer/component@^0.8.0-alpha.10":
-  version "0.8.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@glimmer/component/-/component-0.8.0-alpha.10.tgz#734263f154e68c5342e3a27aee36134dd847a9d5"
+"@glimmer/component@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@glimmer/component/-/component-0.8.0.tgz#7ca3efe365c96356720a5926eda51626e0d4bc6a"
   dependencies:
     "@glimmer/di" "^0.1.9"
     "@glimmer/env" "^0.1.7"
