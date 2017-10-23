@@ -192,7 +192,7 @@ export default class GlimmerApiDocs extends Component {
   }
 
   showProject(projectId) {
-    const componentName = 'project-landing';
+    const componentName = 'ProjectLanding';
     let project = this.docsService.fetchProject(projectId);
     let module = null;
 
@@ -213,7 +213,7 @@ export default class GlimmerApiDocs extends Component {
   }
 
   showModule(projectId, moduleId) {
-    const componentName = 'module-landing';
+    const componentName = 'ModuleLanding';
     let project = this.docsService.fetchProject(projectId);
     let module = this.docsService.fetchModule(moduleId, projectId);
 

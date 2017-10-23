@@ -1,6 +1,6 @@
 <div class="type-annotation">
   {{#if @type.link}}
-    <entity-link @name={{@type.name}} @projectId={{@type.link.parent.slug}} @moduleId={{@type.link.slug}} />
+    <EntityLink @name={{@type.name}} @projectId={{@type.link.parent.slug}} @moduleId={{@type.link.slug}} />
   {{else}}
     <span class="type">{{@type.name}}</span>
   {{/if}}
