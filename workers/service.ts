@@ -11,6 +11,20 @@ var URLS_TO_CACHE = [
   'https://fonts.googleapis.com/css?family=Roboto|Robot+Mono'
 ];
 
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(keys) {
+      return Promise.all(
+        keys.filter(function(key) {
+          return !URLS_TO_CACHE.includes(key);
+        }).map(function(key) {
+          return caches.delete(key);
+        })
+      );
+    })
+  );
+});
+
 self.addEventListener('install', function(event) {
   // Perform install steps
   event.waitUntil(
