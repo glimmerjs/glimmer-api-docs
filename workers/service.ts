@@ -32,6 +32,11 @@ self.addEventListener('fetch', function(event) {
     // fallback so we can ship new version of the app
     event.respondWith(
       fetch(request)
+        // Request succeeded - update cache
+        .then(function(response) {
+          cache.put(request, response);
+          return response;
+        })
         // Request failed - fall back to cache
         .catch(function() {
           return caches.match(request);
