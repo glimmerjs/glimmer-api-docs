@@ -9,8 +9,21 @@ export default class App extends Application {
     let resolver = new Resolver(resolverConfiguration, moduleRegistry);
 
     super({
-      rootName: resolverConfiguration.app.rootName,
-      resolver
+      resolver,
+      rootName: resolverConfiguration.app.rootName
     });
   }
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/api/service.js')
+    .then(registration => {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }).catch(function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
 }

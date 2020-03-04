@@ -1,5 +1,5 @@
-import App from './main';
 import { ComponentManager, setPropertyDidChange } from '@glimmer/component';
+import App from './main';
 
 const app = new App();
 const containerElement = document.getElementById('app');
@@ -14,9 +14,9 @@ app.registerInitializer({
   }
 });
 
-app.boot();
-
 while(containerElement.firstChild) {
   containerElement.removeChild(containerElement.firstChild);
 }
+
 app.renderComponent('GlimmerApiDocs', containerElement, null);
+app.boot();

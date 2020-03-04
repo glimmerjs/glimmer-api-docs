@@ -11,12 +11,25 @@ var URLS_TO_CACHE = [
   'https://fonts.googleapis.com/css?family=Roboto|Robot+Mono'
 ];
 
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(keys) {
+      return Promise.all(
+        keys.filter(function(key) {
+          return !URLS_TO_CACHE.includes(key);
+        }).map(function(key) {
+          return caches.delete(key);
+        })
+      );
+    })
+  );
+});
+
 self.addEventListener('install', function(event) {
   // Perform install steps
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function(cache) {
-        console.log('Opened cache');
         return cache.addAll(URLS_TO_CACHE);
       })
   );
@@ -33,6 +46,11 @@ self.addEventListener('fetch', function(event) {
     // fallback so we can ship new version of the app
     event.respondWith(
       fetch(request)
+        // Request succeeded - update cache
+        .then(function(response) {
+          cache.put(request, response);
+          return response;
+        })
         // Request failed - fall back to cache
         .catch(function() {
           return caches.match(request);
